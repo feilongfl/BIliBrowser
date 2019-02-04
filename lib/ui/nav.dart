@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 final _drawerHeader = UserAccountsDrawerHeader(
-  accountName: Text('AVIS'),
-  accountEmail: Text('AVIS.feilong.ml'),
+  accountName: Text('22'),
+  accountEmail: Text('22.bilibili.com'),
   currentAccountPicture: CircleAvatar(
     child: FlutterLogo(
       size: 42,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-//Widget AnimeTab = Center(
-//  child: Icon(Icons.texture),
-//);
+//https://bangumi.bilibili.com/api/timeline_v2_global
+//https://bangumi.bilibili.com/api/timeline_v2_cn
 
 class AnimeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Center(
-      child: Icon(Icons.play_circle_filled),
+    return Scaffold(
+
     );
   }
 }
