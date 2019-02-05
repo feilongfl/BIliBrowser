@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:bilibrowser/ui/topbar.dart';
 import 'package:bilibrowser/generated/i18n.dart';
+import 'package:bilibrowser/ui/topbar.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: TopBar(title: ""),
+      home: TopBar(),
     );
   }
 }

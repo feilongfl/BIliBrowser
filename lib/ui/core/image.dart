@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-final ImagePage = Center(
+final imagePage = Center(
   child: Icon(Icons.image),
 );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-final SoundPage = Center(
+final soundPage = Center(
   child: Icon(Icons.record_voice_over),
 );

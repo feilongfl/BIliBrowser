@@ -1,44 +1,11 @@
 import 'package:bilibrowser/ui/animetab/anime.dart';
-import 'package:flutter/material.dart';
 import 'package:bilibrowser/ui/nav.dart';
-
-final tabs = <TopBarWidget>[
-  TopBarWidget(
-      Tab(
-        text: "Anime",
-      ),
-      new AnimeTab()),
-  TopBarWidget(
-      Tab(
-        text: "Live",
-      ),
-      null),
-  TopBarWidget(
-      Tab(
-        text: "Channel",
-      ),
-      null),
-  TopBarWidget(
-      Tab(
-        text: "Music",
-      ),
-      null),
-  TopBarWidget(
-      Tab(
-        text: "News",
-      ),
-      null),
-  TopBarWidget(
-      Tab(
-        text: "Comic",
-      ),
-      null),
-];
+import 'package:flutter/material.dart';
 
 class TopBar extends StatefulWidget {
-  TopBar({Key key, this.title}) : super(key: key);
+//  TopBar({Key key, this.title}) : super(key: key);
 
-  final String title;
+//  final String title;
 
   @override
   _TopBarState createState() => _TopBarState();
@@ -60,9 +27,42 @@ class TopBarWidget {
 }
 
 class _TopBarState extends State<TopBar> {
+  final tabs = <TopBarWidget>[
+    TopBarWidget(
+        Tab(
+          text: "Anime",
+        ),
+        AnimeTab()),
+    TopBarWidget(
+        Tab(
+          text: "Live",
+        ),
+        null),
+    TopBarWidget(
+        Tab(
+          text: "Channel",
+        ),
+        null),
+    TopBarWidget(
+        Tab(
+          text: "Music",
+        ),
+        null),
+    TopBarWidget(
+        Tab(
+          text: "News",
+        ),
+        null),
+    TopBarWidget(
+        Tab(
+          text: "Comic",
+        ),
+        null),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    Locale myLocale = Localizations.localeOf(context);
+//    Locale myLocale = Localizations.localeOf(context);
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(

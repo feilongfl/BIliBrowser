@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-final ArticlePage = Center(
+final articlePage = Center(
   child: Icon(Icons.assignment),
 );
