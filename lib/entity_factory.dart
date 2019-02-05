@@ -1,5 +1,5 @@
-import 'package:bilibrowser/ui/animetab/AnimeCNTimeline_entity.dart';
-import 'package:bilibrowser/ui/animetab/AnimeGlobalTimeline_entity.dart';
+import 'package:bilibrowser/bilibiliApi/AnimeCNTimeline_entity.dart';
+import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
 
 class EntityFactory {
   static T generateOBJ<T>(json) {

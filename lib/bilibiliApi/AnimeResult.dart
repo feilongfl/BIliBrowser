@@ -1,35 +1,4 @@
-//https://bangumi.bilibili.com/api/timeline_v2_global
-
-class AnimeglobaltimelineEntity {
-  List<AnimeglobaltimelineResult> result;
-  int code;
-  String message;
-
-  AnimeglobaltimelineEntity({this.result, this.code, this.message});
-
-  AnimeglobaltimelineEntity.fromJson(Map<String, dynamic> json) {
-    if (json['result'] != null) {
-      result = new List<AnimeglobaltimelineResult>();
-      json['result'].forEach((v) {
-        result.add(new AnimeglobaltimelineResult.fromJson(v));
-      });
-    }
-    code = json['code'];
-    message = json['message'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.result != null) {
-      data['result'] = this.result.map((v) => v.toJson()).toList();
-    }
-    data['code'] = this.code;
-    data['message'] = this.message;
-    return data;
-  }
-}
-
-class AnimeglobaltimelineResult {
+class AnimeResult {
   String area;
   int arealimit;
   int attention;
@@ -53,10 +22,31 @@ class AnimeglobaltimelineResult {
   int viewrank;
   int weekday;
 
-  AnimeglobaltimelineResult(
-      {this.area, this.arealimit, this.attention, this.bangumiId, this.bgmcount, this.cover, this.danmakuCount, this.epId, this.favorites, this.isFinish, this.lastupdate, this.lastupdateAt, this.isNew, this.playCount, this.pubTime, this.seasonId, this.seasonStatus, this.spid, this.squareCover, this.title, this.viewrank, this.weekday});
+  AnimeResult(
+      {this.area,
+      this.arealimit,
+      this.attention,
+      this.bangumiId,
+      this.bgmcount,
+      this.cover,
+      this.danmakuCount,
+      this.epId,
+      this.favorites,
+      this.isFinish,
+      this.lastupdate,
+      this.lastupdateAt,
+      this.isNew,
+      this.playCount,
+      this.pubTime,
+      this.seasonId,
+      this.seasonStatus,
+      this.spid,
+      this.squareCover,
+      this.title,
+      this.viewrank,
+      this.weekday});
 
-  AnimeglobaltimelineResult.fromJson(Map<String, dynamic> json) {
+  AnimeResult.fromJson(Map<String, dynamic> json) {
     area = json['area'];
     arealimit = json['arealimit'];
     attention = json['attention'];
