@@ -1,5 +1,5 @@
 import 'package:bilibrowser/generated/i18n.dart';
-import 'package:bilibrowser/ui/topbar.dart';
+import 'package:bilibrowser/ui/homepage/topbar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

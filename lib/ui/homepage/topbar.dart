@@ -1,5 +1,5 @@
-import 'package:bilibrowser/ui/animetab/anime.dart';
-import 'package:bilibrowser/ui/nav.dart';
+import 'package:bilibrowser/ui/homepage/animetab/anime.dart';
+import 'package:bilibrowser/ui/homepage/nav.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatefulWidget {

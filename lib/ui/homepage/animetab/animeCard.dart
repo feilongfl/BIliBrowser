@@ -1,5 +1,6 @@
 import 'package:bilibrowser/bilibiliApi/AnimeResult.dart';
-import 'package:bilibrowser/core/launchUri.dart';
+import 'package:bilibrowser/ui/episodepage/episodepage.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class AnimeCard extends StatelessWidget {
@@ -12,17 +13,18 @@ class AnimeCard extends StatelessWidget {
     // TODO: implement build
     return GridTile(
       child: InkResponse(
-        onTap: () =>
-            launchURL(
-                'https://m.bilibili.com/bangumi/play/ep' +
-                    anime.epId.toString()),
+        onTap: () => Navigator.of(context).push(episodePage(anime)),
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: <Widget>[
-            FadeInImage.assetNetwork(
-              placeholder: 'res/images/Placeholder.png',
-              image: anime.cover,
-              fit: BoxFit.fill,
+//            FadeInImage.assetNetwork(
+//              placeholder: 'res/images/Placeholder.png',
+//              image: anime.cover,
+//              fit: BoxFit.fill,
+//            ),
+            CachedNetworkImage(
+              placeholder: Center(child: CircularProgressIndicator()),
+              imageUrl: anime.cover,
             ),
             Opacity(
               opacity: 0.3,

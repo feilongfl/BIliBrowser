@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
-import 'package:bilibrowser/ui/animetab/animeCard.dart';
+import 'package:bilibrowser/ui/homepage/animetab/animeCard.dart';
 import 'package:flutter/material.dart';
 
 class AnimeTab extends StatefulWidget {
@@ -16,7 +16,8 @@ AnimeglobaltimelineEntity animeglobaltimelineEntity;
 class AnimeTabState extends State<AnimeTab> {
   static const animeGlobalUrl =
       "https://bangumi.bilibili.com/api/timeline_v2_global";
-  List<String> animeGlobalList = ["1", "2", "Third", "4"];
+
+//  List<String> animeGlobalList = ["1", "2", "Third", "4"];
   AnimeglobaltimelineEntity _animeglobaltimelineEntity = animeglobaltimelineEntity;
 
   Future<void> _getAnimeGlobalList() async {
@@ -49,7 +50,7 @@ class AnimeTabState extends State<AnimeTab> {
     return RefreshIndicator(
       onRefresh: _getAnimeGlobalList,
       child: Container(
-        padding: EdgeInsets.only(top: 20, left: 5, right: 5, bottom: 20),
+        padding: EdgeInsets.only(top: 20, left: 5, right: 5, bottom: 1),
         child: GridView.builder(
           itemCount: _animeglobaltimelineEntity == null
               ? 1
