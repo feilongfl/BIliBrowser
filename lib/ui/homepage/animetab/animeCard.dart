@@ -14,35 +14,38 @@ class AnimeCard extends StatelessWidget {
     return GridTile(
       child: InkResponse(
         onTap: () => Navigator.of(context).push(episodePage(anime)),
-        child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: <Widget>[
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: <Widget>[
 //            FadeInImage.assetNetwork(
 //              placeholder: 'res/images/Placeholder.png',
 //              image: anime.cover,
 //              fit: BoxFit.fill,
 //            ),
-            CachedNetworkImage(
-              placeholder: Center(child: CircularProgressIndicator()),
-              imageUrl: anime.cover,
-            ),
-            Opacity(
-              opacity: 0.3,
-              child: Container(
-                height: 24,
-                color: Colors.black,
+              CachedNetworkImage(
+                placeholder: Center(child: CircularProgressIndicator()),
+                imageUrl: anime.cover,
               ),
-            ),
-            Text(
-              anime.title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+              Opacity(
+                opacity: 0.3,
+                child: Container(
+                  height: 24,
+                  color: Colors.black,
+                ),
               ),
-              overflow: TextOverflow.ellipsis,
-              softWrap: false,
-            ),
-          ],
+              Text(
+                anime.title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+              ),
+            ],
+          ),
         ),
       ),
     );

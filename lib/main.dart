@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (BuildContext context) => S.of(context).title,
       theme: ThemeData(
         primarySwatch: Colors.red,
+        primaryColorBrightness: Brightness.dark,
       ),
       home: TopBar(),
     );
