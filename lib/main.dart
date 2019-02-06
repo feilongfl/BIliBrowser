@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: "BiliBrowser",
       onGenerateTitle: (BuildContext context) => S.of(context).title,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
         primaryColorBrightness: Brightness.dark,
       ),
       home: TopBar(),

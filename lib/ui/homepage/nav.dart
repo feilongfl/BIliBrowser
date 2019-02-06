@@ -1,18 +1,25 @@
+import 'package:bilibrowser/ui/loginPage/loginpage.dart';
 import 'package:flutter/material.dart';
 
-final _drawerHeader = UserAccountsDrawerHeader(
-  accountName: Text('22'),
-  accountEmail: Text('22.bilibili.com'),
-  currentAccountPicture: CircleAvatar(
-    child: FlutterLogo(
-      size: 42,
-    ),
-  ),
-);
+class _drawerHeader extends StatelessWidget{
+  @override
+  build(BuildContext context){
+    return UserAccountsDrawerHeader(
+      accountName: Text('22'),
+      accountEmail: Text('22.bilibili.com'),
+      currentAccountPicture: CircleAvatar(
+        child: FlutterLogo(
+          size: 42,
+        ),
+      ),
+      onDetailsPressed: () => Navigator.of(context).push(loginPage()),
+    );
+  }
+}
 
 final navDrawer = ListView(
   children: <Widget>[
-    _drawerHeader,
+    _drawerHeader(),
 //    ListTile(
 //      leading: Icon(Icons.bubble_chart),
 //      title: Text('Plugin'),
