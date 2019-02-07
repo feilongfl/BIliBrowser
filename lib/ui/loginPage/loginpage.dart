@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class loginWiget extends StatefulWidget {
   @override
@@ -6,8 +11,7 @@ class loginWiget extends StatefulWidget {
 }
 
 class loginState extends State<loginWiget> {
-  var _userPassController = new TextEditingController();
-  var _userNameController = new TextEditingController();
+  var _userCookiesController = new TextEditingController();
   var leftRightPadding = 30.0;
   var topBottomPadding = 4.0;
   var textTips = new TextStyle(fontSize: 16.0, color: Colors.black);
@@ -36,21 +40,12 @@ class loginState extends State<loginWiget> {
               Padding(
                 padding: EdgeInsets.fromLTRB(
                     leftRightPadding, 50.0, leftRightPadding, topBottomPadding),
-                child: TextField(
+                child: TextFormField(
                   style: hintTips,
-                  controller: _userNameController,
-                  decoration: InputDecoration(hintText: "UserName"),
+                  controller: _userCookiesController,
+                  decoration: InputDecoration(hintText: "Cookies"),
                   obscureText: false,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    leftRightPadding, 30.0, leftRightPadding, topBottomPadding),
-                child: TextField(
-                  style: hintTips,
-                  controller: _userPassController,
-                  decoration: InputDecoration(hintText: "Password"),
-                  obscureText: true,
+                  maxLines: 6,
                 ),
               ),
               Container(
@@ -62,25 +57,23 @@ class loginState extends State<loginWiget> {
                   color: Colors.pink,
                   elevation: 6.0,
                   child: FlatButton(
-                      onPressed: isLogging? null : () {
-                        print("username: ${_userNameController.text}");
-                        print("password: ${_userPassController.text}");
-                        setState(() {
-                          this.isLogging = true;
-                        });
+                      onPressed: isLogging
+                          ? null
+                          : () {
+                        loginBiliBili(_userCookiesController.text);
                       },
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: (isLogging)
                             ? CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white),
-                              )
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.white),
+                        )
                             : Text(
-                                'Login',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16.0),
-                              ),
+                          'Login',
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 16.0),
+                        ),
                       )),
                 ),
               ),
@@ -90,11 +83,53 @@ class loginState extends State<loginWiget> {
       ),
     );
   }
+
+  @override
+  void initState() {
+    super.initState();
+    setDefault();
+  }
+
+  void setDefault() async {
+    // TODO: implement initState
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String cookies = await prefs.get('cookies') ?? "";
+    setState(() {
+      this._userCookiesController.text = cookies;
+    });
+  }
+
+  List<Cookie> parseCookies(String str) {
+    List<String> cookiesStr = str.split(';');
+    List<Cookie> cookies = new List();
+    cookiesStr.forEach((cookstr) {
+      var arr = cookstr.trim().split('=');
+      print("cookies add: ${arr[0]} ${arr[1]}");
+      cookies.add(Cookie(arr[0], arr[1]));
+    });
+    return cookies;
+  }
+
+  void loginBiliBili(String cookiesStr) async {
+    setState(() {
+      isLogging = true;
+    });
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('cookies', cookiesStr);
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    var cj = new PersistCookieJar(appDocDir.path);
+    cj.saveFromResponse(
+        Uri.parse("https://.bilibili.com/"), parseCookies(cookiesStr));
+    setState(() {
+      isLogging = false;
+    });
+    Navigator.pop(context);
+  }
 }
 
 class loginPage extends MaterialPageRoute<Null> {
   loginPage()
       : super(builder: (BuildContext context) {
-          return loginWiget();
-        });
+    return loginWiget();
+  });
 }
