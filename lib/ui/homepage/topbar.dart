@@ -1,5 +1,7 @@
 import 'package:bilibrowser/ui/homepage/animetab/anime.dart';
+import 'package:bilibrowser/ui/homepage/livetab/livetab.dart';
 import 'package:bilibrowser/ui/homepage/nav.dart';
+import 'package:bilibrowser/ui/homepage/newstab/newstab.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatefulWidget {
@@ -16,8 +18,14 @@ class TopBarWidget {
     icon: Icon(Icons.texture),
     text: "tab",
   );
-  Widget widget = Center(
-    child: Icon(Icons.texture),
+  Widget widget = Container(
+    color: Colors.black87,
+    child: Center(
+      child: Icon(
+        Icons.texture,
+        color: Colors.white,
+      ),
+    ),
   );
 
   TopBarWidget(tab, widget) {
@@ -37,7 +45,7 @@ class _TopBarState extends State<TopBar> {
         Tab(
           text: "Live",
         ),
-        null),
+        liveTab()),
     TopBarWidget(
         Tab(
           text: "Channel",
@@ -52,7 +60,7 @@ class _TopBarState extends State<TopBar> {
         Tab(
           text: "News",
         ),
-        null),
+        newsTab()),
     TopBarWidget(
         Tab(
           text: "Comic",
