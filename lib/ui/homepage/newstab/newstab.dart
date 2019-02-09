@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_card_type2_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_extend_json_entity.dart';
 import 'package:bilibrowser/core/http.dart';
+import 'package:bilibrowser/ui/homepage/newstab/news_card.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -91,84 +90,8 @@ class liveListState extends State<liveList> {
             itemBuilder: (BuildContext context, int index) {
               return Center(
                   child: attentionVideoInfoItem(
-                      this.attention.data.card[index]));
+                      card: this.attention.data.card[index]));
             }),
-      ),
-    );
-  }
-}
-
-Widget attentionVideoInfoItem(AttentionDataCard card) {
-  switch (card.desc.type) {
-    case 2:
-      return attentionVideoInfoItemType2(
-        attentionDataCard: card,
-      );
-      break;
-
-    default:
-      break;
-  }
-  return null;
-}
-
-class attentionVideoInfoItemType2 extends StatelessWidget {
-  final AttentionDataCard attentionDataCard;
-  AttentionCardType2 card;
-  AttentionExtendJson ext;
-
-  attentionVideoInfoItemType2({Key key, this.attentionDataCard})
-      : super(key: key) {
-    card = AttentionCardType2.fromJson(json.decode(attentionDataCard.card));
-    ext =
-        AttentionExtendJson.fromJson(json.decode(attentionDataCard.extendJson));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return ListTile(
-      title: InkResponse(
-        onTap: () {
-//          launchURL(this.attentionDataCard.);
-        },
-        child: Column(
-          children: <Widget>[
-//            Container(
-//              height: 230,
-//              child: CachedNetworkImage(
-//                imageUrl: info.pic,
-//                placeholder: Center(child: CircularProgressIndicator()),
-//              ),
-//            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-//            crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-//                  CircleAvatar(
-//                    child: ClipRRect(
-//                      borderRadius: BorderRadius.all(Radius.circular(50)),
-//                      child: CachedNetworkImage(
-//                          imageUrl: card.user,
-//                          placeholder: CircularProgressIndicator()),
-//                    ),
-//                  ),
-                  Expanded(
-                      child: Center(
-                          child: Text(
-                            card.user.name,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ))),
-                ],
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

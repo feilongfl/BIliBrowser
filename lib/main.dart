@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       localizationsDelegates: [S.delegate],
       supportedLocales: S.delegate.supportedLocales,
-      localeResolutionCallback: S.delegate.resolution(fallback: new Locale("en", "")),
+      localeResolutionCallback:
+      S.delegate.resolution(fallback: new Locale("en", "")),
       title: "BiliBrowser",
       onGenerateTitle: (BuildContext context) => S.of(context).title,
       theme: ThemeData(

@@ -123,8 +123,9 @@ class liveVideoInfoItem extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
                       child: CachedNetworkImage(
-                          imageUrl: info.face,
-                          placeholder: CircularProgressIndicator()),
+                        imageUrl: info.face,
+//                          placeholder: CircularProgressIndicator()
+                      ),
                     ),
                   ),
                   Expanded(

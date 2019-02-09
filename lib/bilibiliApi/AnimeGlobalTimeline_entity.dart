@@ -30,4 +30,3 @@ class AnimeglobaltimelineEntity {
     return data;
   }
 }
-

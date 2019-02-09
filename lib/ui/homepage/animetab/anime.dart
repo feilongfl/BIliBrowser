@@ -18,7 +18,8 @@ class AnimeTabState extends State<AnimeTab> {
       "https://bangumi.bilibili.com/api/timeline_v2_global";
 
 //  List<String> animeGlobalList = ["1", "2", "Third", "4"];
-  AnimeglobaltimelineEntity _animeglobaltimelineEntity = animeglobaltimelineEntity;
+  AnimeglobaltimelineEntity _animeglobaltimelineEntity =
+      animeglobaltimelineEntity;
 
   Future<void> _getAnimeGlobalList() async {
     var httpClient = new HttpClient();

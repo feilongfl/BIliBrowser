@@ -5,8 +5,12 @@ class AttentionCardType2 {
 	AttentionCardType2({this.item, this.user});
 
 	AttentionCardType2.fromJson(Map<String, dynamic> json) {
-		item = json['item'] != null ? new AttentionCardItem.fromJson(json['item']) : null;
-		user = json['user'] != null ? new AttentionCardUser.fromJson(json['user']) : null;
+		item = json['item'] != null
+				? new AttentionCardItem.fromJson(json['item'])
+				: null;
+		user = json['user'] != null
+				? new AttentionCardUser.fromJson(json['user'])
+				: null;
 	}
 
 	Map<String, dynamic> toJson() {
@@ -36,10 +40,24 @@ class AttentionCardItem {
 	String category;
 	int reply;
 
-	AttentionCardItem({this.setting, this.role, this.isFav, this.description, this.source, this.title, this.atControl, this.picture, this.picturesCount, this.uploadTime, this.id, this.category, this.reply});
+	AttentionCardItem({this.setting,
+		this.role,
+		this.isFav,
+		this.description,
+		this.source,
+		this.title,
+		this.atControl,
+		this.picture,
+		this.picturesCount,
+		this.uploadTime,
+		this.id,
+		this.category,
+		this.reply});
 
 	AttentionCardItem.fromJson(Map<String, dynamic> json) {
-		setting = json['settings'] != null ? new AttentionCardItemSetting.fromJson(json['settings']) : null;
+		setting = json['settings'] != null
+				? new AttentionCardItemSetting.fromJson(json['settings'])
+				: null;
 //		if (json['role'] != null) {
 //			role = new List<Null>();
 //			json['role'].forEach((v) { role.add(new Null.fromJson(v)); });
@@ -54,7 +72,9 @@ class AttentionCardItem {
 		atControl = json['at_control'];
 		if (json['pictures'] != null) {
 			picture = new List<AttentionCardItemPicture>();
-			json['pictures'].forEach((v) { picture.add(new AttentionCardItemPicture.fromJson(v)); });
+			json['pictures'].forEach((v) {
+				picture.add(new AttentionCardItemPicture.fromJson(v));
+			});
 		}
 		picturesCount = json['pictures_count'];
 		uploadTime = json['upload_time'];
@@ -112,7 +132,8 @@ class AttentionCardItemPicture {
 	int imgSize;
 	String imgSrc;
 
-	AttentionCardItemPicture({this.imgWidth, this.imgHeight, this.imgSize, this.imgSrc});
+	AttentionCardItemPicture(
+			{this.imgWidth, this.imgHeight, this.imgSize, this.imgSrc});
 
 	AttentionCardItemPicture.fromJson(Map<String, dynamic> json) {
 		imgWidth = json['img_width'];
@@ -143,7 +164,9 @@ class AttentionCardUser {
 		uid = json['uid'];
 		headUrl = json['head_url'];
 		name = json['name'];
-		vip = json['vip'] != null ? new AttentionCardUserVip.fromJson(json['vip']) : null;
+		vip = json['vip'] != null
+				? new AttentionCardUserVip.fromJson(json['vip'])
+				: null;
 	}
 
 	Map<String, dynamic> toJson() {
@@ -166,7 +189,12 @@ class AttentionCardUserVip {
 	String dueremark;
 	String vipstatuswarn;
 
-	AttentionCardUserVip({this.vipduedate, this.viptype, this.accessstatu, this.vipstatu, this.dueremark, this.vipstatuswarn});
+	AttentionCardUserVip({this.vipduedate,
+		this.viptype,
+		this.accessstatu,
+		this.vipstatu,
+		this.dueremark,
+		this.vipstatuswarn});
 
 	AttentionCardUserVip.fromJson(Map<String, dynamic> json) {
 		vipduedate = json['vipDueDate'];

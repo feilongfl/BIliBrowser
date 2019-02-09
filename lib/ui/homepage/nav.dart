@@ -22,8 +22,6 @@ class _drawerHeaderState extends State<_drawerHeader> {
     getUserInfo();
   }
 
-
-
   void getUserInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var userInfo = prefs.getString("userinfo");
@@ -38,8 +36,8 @@ class _drawerHeaderState extends State<_drawerHeader> {
   }
 
   void getUserInfoFromInternet() async {
-    var jsonStr = BiliBiliApi.Get(
-        "https://api.bilibili.com/x/web-interface/nav");
+    var jsonStr =
+    BiliBiliApi.Get("https://api.bilibili.com/x/web-interface/nav");
     setState(() {
       this.userinfo = UserinfoEntity.fromJson(json.decode(jsonStr));
     });
