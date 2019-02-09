@@ -2,7 +2,8 @@ import 'package:bilibrowser/bilibiliApi/AnimeCNTimeline_entity.dart';
 import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
 import 'package:bilibrowser/bilibiliApi/UserInfo_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin_entity.dart';
+import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin2_entity.dart';
+import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin8_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type256_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type2_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type64_entity.dart';
@@ -21,8 +22,10 @@ class EntityFactory {
       return AnimeglobaltimelineEntity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType1") {
       return AttentionCardType1.fromJson(json) as T;
+    } else if (T.toString() == "AttentionCardType1Origin2Entity") {
+      return AttentionCardType1Origin2Entity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType1Origin") {
-      return AttentionCardType1Origin.fromJson(json) as T;
+      return AttentionCardType1Origin8.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType256") {
       return AttentionCardType256.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType2") {

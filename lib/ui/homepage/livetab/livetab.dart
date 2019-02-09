@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:bilibrowser/bilibiliApi/live_info_entity.dart';
 import 'package:bilibrowser/core/http.dart';
 import 'package:bilibrowser/core/launchUri.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:bilibrowser/ui/widget/video_card.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -98,51 +98,14 @@ class liveVideoInfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return ListTile(
-      title: InkResponse(
-//        onTap: () => Navigator.of(context).push(episodePage(anime)),
-        onTap: () {
-          launchURL(this.info.link);
-        },
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: 230,
-              child: CachedNetworkImage(
-                imageUrl: info.pic,
-                placeholder: Center(child: CircularProgressIndicator()),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-//            crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  CircleAvatar(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(50)),
-                      child: CachedNetworkImage(
-                        imageUrl: info.face,
-//                          placeholder: CircularProgressIndicator()
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                      child: Center(
-                          child: Text(
-                    info.title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ))),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+    return VideoCard(
+      title: info.title,
+      username: info.uname,
+      userface: info.face,
+      cover: info.pic,
+      onTap: () {
+        launchURL(this.info.link);
+      },
     );
   }
 }

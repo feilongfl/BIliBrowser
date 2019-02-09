@@ -1,4 +1,4 @@
-class AttentionCardType1Origin {
+class AttentionCardType1Origin8 {
   AttentionCardType1OriginOwner owner;
   int copyright;
   AttentionCardType1OriginStat stat;
@@ -21,7 +21,7 @@ class AttentionCardType1Origin {
   String desc;
   int pubdate;
 
-  AttentionCardType1Origin(
+  AttentionCardType1Origin8(
       {this.owner,
       this.copyright,
       this.stat,
@@ -44,7 +44,7 @@ class AttentionCardType1Origin {
       this.desc,
       this.pubdate});
 
-  AttentionCardType1Origin.fromJson(Map<String, dynamic> json) {
+  AttentionCardType1Origin8.fromJson(Map<String, dynamic> json) {
     owner = json['owner'] != null
         ? new AttentionCardType1OriginOwner.fromJson(json['owner'])
         : null;
