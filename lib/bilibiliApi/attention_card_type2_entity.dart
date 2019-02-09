@@ -1,10 +1,10 @@
-class AttentionCard {
+class AttentionCardType2 {
 	AttentionCardItem item;
 	AttentionCardUser user;
 
-	AttentionCard({this.item, this.user});
+	AttentionCardType2({this.item, this.user});
 
-	AttentionCard.fromJson(Map<String, dynamic> json) {
+	AttentionCardType2.fromJson(Map<String, dynamic> json) {
 		item = json['item'] != null ? new AttentionCardItem.fromJson(json['item']) : null;
 		user = json['user'] != null ? new AttentionCardUser.fromJson(json['user']) : null;
 	}
@@ -40,16 +40,16 @@ class AttentionCardItem {
 
 	AttentionCardItem.fromJson(Map<String, dynamic> json) {
 		setting = json['settings'] != null ? new AttentionCardItemSetting.fromJson(json['settings']) : null;
-		if (json['role'] != null) {
-			role = new List<Null>();
-			json['role'].forEach((v) { role.add(new Null.fromJson(v)); });
-		}
+//		if (json['role'] != null) {
+//			role = new List<Null>();
+//			json['role'].forEach((v) { role.add(new Null.fromJson(v)); });
+//		}
 		isFav = json['is_fav'];
 		description = json['description'];
-		if (json['source'] != null) {
-			source = new List<Null>();
-			json['source'].forEach((v) { source.add(new Null.fromJson(v)); });
-		}
+//		if (json['source'] != null) {
+//			source = new List<Null>();
+//			json['source'].forEach((v) { source.add(new Null.fromJson(v)); });
+//		}
 		title = json['title'];
 		atControl = json['at_control'];
 		if (json['pictures'] != null) {
@@ -69,12 +69,12 @@ class AttentionCardItem {
       data['settings'] = this.setting.toJson();
     }
 		if (this.role != null) {
-      data['role'] = this.role.map((v) => v.toJson()).toList();
+//      data['role'] = this.role.map((v) => v.toJson()).toList();
     }
 		data['is_fav'] = this.isFav;
 		data['description'] = this.description;
 		if (this.source != null) {
-      data['source'] = this.source.map((v) => v.toJson()).toList();
+//      data['source'] = this.source.map((v) => v.toJson()).toList();
     }
 		data['title'] = this.title;
 		data['at_control'] = this.atControl;

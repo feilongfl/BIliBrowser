@@ -1,7 +1,7 @@
 import 'package:bilibrowser/bilibiliApi/AnimeCNTimeline_entity.dart';
 import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
 import 'package:bilibrowser/bilibiliApi/UserInfo_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_entity.dart';
+import 'package:bilibrowser/bilibiliApi/attention_card_type2_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_extend_json_entity.dart';
 import 'package:bilibrowser/bilibiliApi/live_info_entity.dart';
@@ -15,7 +15,7 @@ class EntityFactory {
     } else if (T.toString() == "AnimeglobaltimelineEntity") {
       return AnimeglobaltimelineEntity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCard") {
-      return AttentionCard.fromJson(json) as T;
+      return AttentionCardType2.fromJson(json) as T;
     } else if (T.toString() == "Attention") {
       return Attention.fromJson(json) as T;
     } else if (T.toString() == "AttentionExtendJson") {
