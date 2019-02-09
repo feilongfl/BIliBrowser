@@ -1,5 +1,6 @@
 import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1_ori2.dart';
+import 'package:bilibrowser/ui/homepage/newstab/news_card1_ori8.dart';
 import 'package:flutter/material.dart';
 
 class attentionVideoInfoItemType1Ori extends StatelessWidget {
@@ -12,6 +13,11 @@ class attentionVideoInfoItemType1Ori extends StatelessWidget {
     switch (card.item.origType) {
       case 2:
         return attentionVideoInfoItemType1Ori2(
+          card: card,
+        );
+        break;
+      case 8:
+        return attentionVideoInfoItemType1Ori8(
           card: card,
         );
         break;

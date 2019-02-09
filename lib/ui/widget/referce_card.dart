@@ -8,7 +8,7 @@ class ReferceCard extends StatelessWidget {
   final title;
   final content;
   final ori_title;
-  final ori_pics;
+  final List<String> ori_pics;
   final ori_user;
   final ori_uface;
   final ori_content;
@@ -45,12 +45,14 @@ class ReferceCard extends StatelessWidget {
               ),
             ),
             Container(
+                padding: EdgeInsets.all(10),
                 color: Colors.white10,
                 child: MomentCard(
                   title: ori_title,
                   content: ori_content,
                   username: ori_user,
                   userface: ori_uface,
+                  pics: ori_pics,
                 )),
             Padding(
               padding: EdgeInsets.only(top: 15),

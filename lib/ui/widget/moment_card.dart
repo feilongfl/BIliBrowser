@@ -6,6 +6,7 @@ class MomentCard extends StatelessWidget {
   final userface;
   final title;
   final content;
+  final List<String> pics;
   final GestureTapCallback onTap;
 
   MomentCard(
@@ -14,6 +15,7 @@ class MomentCard extends StatelessWidget {
       this.content,
       this.userface,
       this.username,
+        this.pics,
       this.onTap})
       : super(key: key);
 
@@ -33,8 +35,31 @@ class MomentCard extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
             ),
+            Container(
+              color: Colors.white12,
+              padding: EdgeInsets.all(5),
+              child: GridView.count(
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                childAspectRatio: 1,
+//                crossAxisCount: 3,
+                crossAxisCount: pics.length < 3 ? pics.length : 3,
+                shrinkWrap: true,
+                primary: false,
+                children: pics
+                    .map((p) =>
+                    GridTile(
+                        child: CachedNetworkImage(
+                          imageUrl: p,
+                          placeholder:
+                          Center(child: CircularProgressIndicator()),
+                          fit: BoxFit.fill,
+                        )))
+                    .toList(),
+              ),
+            ),
             Padding(
-              padding: EdgeInsets.only(top: 15),
+              padding: EdgeInsets.only(top: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
 //            crossAxisAlignment: CrossAxisAlignment.stretch,

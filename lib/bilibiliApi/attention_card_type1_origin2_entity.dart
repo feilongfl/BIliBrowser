@@ -1,50 +1,20 @@
-class AttentionCardType1Origin2Entity {
-  AttentionCardType1Origin2EntityItem item;
-  AttentionCardType1Origin2EntityOriginExtension originExtension;
-  String originExtendJson;
-  String origin;
-  AttentionCardType1Origin2EntityOriginUser originUser;
-  AttentionCardType1Origin2EntityUser user;
+class AttentionCardType1Origin2 {
+  AttentionCardType1Origin2Item item;
+  AttentionCardType1Origin2User user;
 
-  AttentionCardType1Origin2Entity(
-      {this.item,
-      this.originExtension,
-      this.originExtendJson,
-      this.origin,
-      this.originUser,
-      this.user});
+  AttentionCardType1Origin2({this.item, this.user});
 
-  AttentionCardType1Origin2Entity.fromJson(Map<String, dynamic> json) {
-    item = json['item'] != null
-        ? new AttentionCardType1Origin2EntityItem.fromJson(json['item'])
-        : null;
-    originExtension = json['origin_extension'] != null
-        ? new AttentionCardType1Origin2EntityOriginExtension.fromJson(
-            json['origin_extension'])
-        : null;
-    originExtendJson = json['origin_extend_json'];
-    origin = json['origin'];
-    originUser = json['origin_user'] != null
-        ? new AttentionCardType1Origin2EntityOriginUser.fromJson(
-            json['origin_user'])
-        : null;
-    user = json['user'] != null
-        ? new AttentionCardType1Origin2EntityUser.fromJson(json['user'])
-        : null;
+  AttentionCardType1Origin2.fromJson(Map<String, dynamic> json) {
+    item = json['item'] != null ? new AttentionCardType1Origin2Item.fromJson(
+        json['item']) : null;
+    user = json['user'] != null ? new AttentionCardType1Origin2User.fromJson(
+        json['user']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.item != null) {
       data['item'] = this.item.toJson();
-    }
-    if (this.originExtension != null) {
-      data['origin_extension'] = this.originExtension.toJson();
-    }
-    data['origin_extend_json'] = this.originExtendJson;
-    data['origin'] = this.origin;
-    if (this.originUser != null) {
-      data['origin_user'] = this.originUser.toJson();
     }
     if (this.user != null) {
       data['user'] = this.user.toJson();
@@ -53,115 +23,151 @@ class AttentionCardType1Origin2Entity {
   }
 }
 
-class AttentionCardType1Origin2EntityItem {
-  int uid;
-  int origDyId;
-  int rpId;
-  int preDyId;
+class AttentionCardType1Origin2Item {
+  AttentionCardType1Origin2ItemSetting setting;
+  List<Null> role;
+  int isFav;
+  String description;
+  List<Null> source;
+  String title;
+  String atControl;
+  List<AttentionCardType1Origin2ItemPicture> picture;
+  int picturesCount;
+  int uploadTime;
+  int id;
+  String category;
   int reply;
-  int origType;
-  String content;
-  int timestamp;
 
-  AttentionCardType1Origin2EntityItem(
-      {this.uid,
-      this.origDyId,
-      this.rpId,
-      this.preDyId,
-      this.reply,
-      this.origType,
-      this.content,
-      this.timestamp});
+  AttentionCardType1Origin2Item(
+      {this.setting, this.role, this.isFav, this.description, this.source, this.title, this.atControl, this.picture, this.picturesCount, this.uploadTime, this.id, this.category, this.reply});
 
-  AttentionCardType1Origin2EntityItem.fromJson(Map<String, dynamic> json) {
-    uid = json['uid'];
-    origDyId = json['orig_dy_id'];
-    rpId = json['rp_id'];
-    preDyId = json['pre_dy_id'];
+  AttentionCardType1Origin2Item.fromJson(Map<String, dynamic> json) {
+    setting =
+    json['settings'] != null ? new AttentionCardType1Origin2ItemSetting
+        .fromJson(json['settings']) : null;
+//		if (json['role'] != null) {
+//			role = new List<Null>();
+//			json['role'].forEach((v) { role.add(new Null.fromJson(v)); });
+//		}
+    isFav = json['is_fav'];
+    description = json['description'];
+//		if (json['source'] != null) {
+//			source = new List<Null>();
+//			json['source'].forEach((v) { source.add(new Null.fromJson(v)); });
+//		}
+    title = json['title'];
+    atControl = json['at_control'];
+    if (json['pictures'] != null) {
+      picture = new List<AttentionCardType1Origin2ItemPicture>();
+      json['pictures'].forEach((v) {
+        picture.add(new AttentionCardType1Origin2ItemPicture.fromJson(v));
+      });
+    }
+    picturesCount = json['pictures_count'];
+    uploadTime = json['upload_time'];
+    id = json['id'];
+    category = json['category'];
     reply = json['reply'];
-    origType = json['orig_type'];
-    content = json['content'];
-    timestamp = json['timestamp'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.setting != null) {
+      data['settings'] = this.setting.toJson();
+    }
+    if (this.role != null) {
+//      data['role'] = this.role.map((v) => v.toJson()).toList();
+    }
+    data['is_fav'] = this.isFav;
+    data['description'] = this.description;
+    if (this.source != null) {
+//      data['source'] = this.source.map((v) => v.toJson()).toList();
+    }
+    data['title'] = this.title;
+    data['at_control'] = this.atControl;
+    if (this.picture != null) {
+      data['pictures'] = this.picture.map((v) => v.toJson()).toList();
+    }
+    data['pictures_count'] = this.picturesCount;
+    data['upload_time'] = this.uploadTime;
+    data['id'] = this.id;
+    data['category'] = this.category;
+    data['reply'] = this.reply;
+    return data;
+  }
+}
+
+class AttentionCardType1Origin2ItemSetting {
+  int copyForbidden;
+
+  AttentionCardType1Origin2ItemSetting({this.copyForbidden});
+
+  AttentionCardType1Origin2ItemSetting.fromJson(Map<String, dynamic> json) {
+    copyForbidden = json['copy_forbidden'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['copy_forbidden'] = this.copyForbidden;
+    return data;
+  }
+}
+
+class AttentionCardType1Origin2ItemPicture {
+  int imgWidth;
+  int imgHeight;
+  int imgSize;
+  String imgSrc;
+
+  AttentionCardType1Origin2ItemPicture(
+      {this.imgWidth, this.imgHeight, this.imgSize, this.imgSrc});
+
+  AttentionCardType1Origin2ItemPicture.fromJson(Map<String, dynamic> json) {
+    imgWidth = json['img_width'];
+    imgHeight = json['img_height'];
+    imgSize = json['img_size'];
+    imgSrc = json['img_src'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['img_width'] = this.imgWidth;
+    data['img_height'] = this.imgHeight;
+    data['img_size'] = this.imgSize;
+    data['img_src'] = this.imgSrc;
+    return data;
+  }
+}
+
+class AttentionCardType1Origin2User {
+  int uid;
+  String headUrl;
+  String name;
+  AttentionCardType1Origin2UserVip vip;
+
+  AttentionCardType1Origin2User({this.uid, this.headUrl, this.name, this.vip});
+
+  AttentionCardType1Origin2User.fromJson(Map<String, dynamic> json) {
+    uid = json['uid'];
+    headUrl = json['head_url'];
+    name = json['name'];
+    vip = json['vip'] != null ? new AttentionCardType1Origin2UserVip.fromJson(
+        json['vip']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['uid'] = this.uid;
-    data['orig_dy_id'] = this.origDyId;
-    data['rp_id'] = this.rpId;
-    data['pre_dy_id'] = this.preDyId;
-    data['reply'] = this.reply;
-    data['orig_type'] = this.origType;
-    data['content'] = this.content;
-    data['timestamp'] = this.timestamp;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginExtension {
-  String lott;
-
-  AttentionCardType1Origin2EntityOriginExtension({this.lott});
-
-  AttentionCardType1Origin2EntityOriginExtension.fromJson(
-      Map<String, dynamic> json) {
-    lott = json['lott'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['lott'] = this.lott;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginUser {
-  AttentionCardType1Origin2EntityOriginUserVip vip;
-  AttentionCardType1Origin2EntityOriginUserPendant pendant;
-  AttentionCardType1Origin2EntityOriginUserCard card;
-  AttentionCardType1Origin2EntityOriginUserInfo info;
-
-  AttentionCardType1Origin2EntityOriginUser(
-      {this.vip, this.pendant, this.card, this.info});
-
-  AttentionCardType1Origin2EntityOriginUser.fromJson(
-      Map<String, dynamic> json) {
-    vip = json['vip'] != null
-        ? new AttentionCardType1Origin2EntityOriginUserVip.fromJson(json['vip'])
-        : null;
-    pendant = json['pendant'] != null
-        ? new AttentionCardType1Origin2EntityOriginUserPendant.fromJson(
-            json['pendant'])
-        : null;
-    card = json['card'] != null
-        ? new AttentionCardType1Origin2EntityOriginUserCard.fromJson(
-            json['card'])
-        : null;
-    info = json['info'] != null
-        ? new AttentionCardType1Origin2EntityOriginUserInfo.fromJson(
-            json['info'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['head_url'] = this.headUrl;
+    data['name'] = this.name;
     if (this.vip != null) {
       data['vip'] = this.vip.toJson();
     }
-    if (this.pendant != null) {
-      data['pendant'] = this.pendant.toJson();
-    }
-    if (this.card != null) {
-      data['card'] = this.card.toJson();
-    }
-    if (this.info != null) {
-      data['info'] = this.info.toJson();
-    }
     return data;
   }
 }
 
-class AttentionCardType1Origin2EntityOriginUserVip {
+class AttentionCardType1Origin2UserVip {
   int vipduedate;
   int viptype;
   int accessstatu;
@@ -169,16 +175,10 @@ class AttentionCardType1Origin2EntityOriginUserVip {
   String dueremark;
   String vipstatuswarn;
 
-  AttentionCardType1Origin2EntityOriginUserVip(
-      {this.vipduedate,
-      this.viptype,
-      this.accessstatu,
-      this.vipstatu,
-      this.dueremark,
-      this.vipstatuswarn});
+  AttentionCardType1Origin2UserVip(
+      {this.vipduedate, this.viptype, this.accessstatu, this.vipstatu, this.dueremark, this.vipstatuswarn});
 
-  AttentionCardType1Origin2EntityOriginUserVip.fromJson(
-      Map<String, dynamic> json) {
+  AttentionCardType1Origin2UserVip.fromJson(Map<String, dynamic> json) {
     vipduedate = json['vipDueDate'];
     viptype = json['vipType'];
     accessstatu = json['accessStatus'];
@@ -195,122 +195,6 @@ class AttentionCardType1Origin2EntityOriginUserVip {
     data['vipStatus'] = this.vipstatu;
     data['dueRemark'] = this.dueremark;
     data['vipStatusWarn'] = this.vipstatuswarn;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginUserPendant {
-  String image;
-  int expire;
-  String name;
-  int pid;
-
-  AttentionCardType1Origin2EntityOriginUserPendant(
-      {this.image, this.expire, this.name, this.pid});
-
-  AttentionCardType1Origin2EntityOriginUserPendant.fromJson(
-      Map<String, dynamic> json) {
-    image = json['image'];
-    expire = json['expire'];
-    name = json['name'];
-    pid = json['pid'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['image'] = this.image;
-    data['expire'] = this.expire;
-    data['name'] = this.name;
-    data['pid'] = this.pid;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginUserCard {
-  AttentionCardType1Origin2EntityOriginUserCardOfficialVerify officialVerify;
-
-  AttentionCardType1Origin2EntityOriginUserCard({this.officialVerify});
-
-  AttentionCardType1Origin2EntityOriginUserCard.fromJson(
-      Map<String, dynamic> json) {
-    officialVerify = json['official_verify'] != null
-        ? new AttentionCardType1Origin2EntityOriginUserCardOfficialVerify
-            .fromJson(json['official_verify'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.officialVerify != null) {
-      data['official_verify'] = this.officialVerify.toJson();
-    }
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginUserCardOfficialVerify {
-  int type;
-  String desc;
-
-  AttentionCardType1Origin2EntityOriginUserCardOfficialVerify(
-      {this.type, this.desc});
-
-  AttentionCardType1Origin2EntityOriginUserCardOfficialVerify.fromJson(
-      Map<String, dynamic> json) {
-    type = json['type'];
-    desc = json['desc'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['desc'] = this.desc;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityOriginUserInfo {
-  int uid;
-  String face;
-  String uname;
-
-  AttentionCardType1Origin2EntityOriginUserInfo(
-      {this.uid, this.face, this.uname});
-
-  AttentionCardType1Origin2EntityOriginUserInfo.fromJson(
-      Map<String, dynamic> json) {
-    uid = json['uid'];
-    face = json['face'];
-    uname = json['uname'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uid'] = this.uid;
-    data['face'] = this.face;
-    data['uname'] = this.uname;
-    return data;
-  }
-}
-
-class AttentionCardType1Origin2EntityUser {
-  int uid;
-  String face;
-  String uname;
-
-  AttentionCardType1Origin2EntityUser({this.uid, this.face, this.uname});
-
-  AttentionCardType1Origin2EntityUser.fromJson(Map<String, dynamic> json) {
-    uid = json['uid'];
-    face = json['face'];
-    uname = json['uname'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uid'] = this.uid;
-    data['face'] = this.face;
-    data['uname'] = this.uname;
     return data;
   }
 }

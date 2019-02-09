@@ -22,9 +22,9 @@ class EntityFactory {
       return AnimeglobaltimelineEntity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType1") {
       return AttentionCardType1.fromJson(json) as T;
-    } else if (T.toString() == "AttentionCardType1Origin2Entity") {
-      return AttentionCardType1Origin2Entity.fromJson(json) as T;
-    } else if (T.toString() == "AttentionCardType1Origin") {
+    } else if (T.toString() == "AttentionCardType1Origin2") {
+      return AttentionCardType1Origin2.fromJson(json) as T;
+    } else if (T.toString() == "AttentionCardType1Origin8") {
       return AttentionCardType1Origin8.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType256") {
       return AttentionCardType256.fromJson(json) as T;
