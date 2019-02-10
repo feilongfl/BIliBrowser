@@ -86,7 +86,8 @@ class _TopBarState extends State<TopBar> {
               onPressed: () {},
             ),
           ],
-          bottom: TabBar(tabs: tabs.map((tab) => tab.tab).toList()),
+          bottom: TabBar(
+            tabs: tabs.map((tab) => tab.tab).toList(), isScrollable: true,),
         ),
         body: TabBarView(children: tabs.map((tab) => tab.widget).toList()),
         drawer: Drawer(

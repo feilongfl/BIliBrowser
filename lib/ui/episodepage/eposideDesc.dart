@@ -1,4 +1,5 @@
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
+import 'package:bilibrowser/ui/videopage/videoPage.dart';
 import 'package:bilibrowser/ui/widget/eposideCard.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,15 @@ class eposideDesc extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          Text(
-            "   ${epInfo.mediainfo.evaluate}",
-            style: Theme.of(context).textTheme.body2,
+          Container(
+            padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+            child: Text(
+              "   ${epInfo.mediainfo.evaluate}",
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .body2,
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(top: 20),
@@ -31,10 +38,13 @@ class eposideDesc extends StatelessWidget {
               children: epInfo.eplist.map((ep) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
-                  child: Container(
-                    width: 235.0,
-                    child: EposideCard(
-                      eposide: ep,
+                  child: InkResponse(
+                    onTap: () => Navigator.of(context).push(videoPage(ep)),
+                    child: Container(
+                      width: 235.0,
+                      child: EposideCard(
+                        eposide: ep,
+                      ),
                     ),
                   ),
                 );

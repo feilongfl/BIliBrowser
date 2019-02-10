@@ -23,8 +23,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
         primaryColorBrightness: Brightness.dark,
         backgroundColor: Colors.black87,
+        dialogBackgroundColor: Colors.black87,
+//        colorScheme: ColorScheme.dark(),
+//        primaryColor: Colors.black87,
         textTheme: TextTheme(
-          headline: TextStyle(fontSize: 36.0, color: Colors.white),
+          headline: TextStyle(fontSize: 32.0, color: Colors.white),
           title: TextStyle(fontSize: 22.0, color: Colors.white),
           body1: TextStyle(fontSize: 14.0, color: Colors.white),
           body2: TextStyle(fontSize: 16.0, color: Colors.white),

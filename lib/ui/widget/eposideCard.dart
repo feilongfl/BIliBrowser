@@ -1,4 +1,5 @@
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
+import 'package:bilibrowser/ui/videopage/videoPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class EposideCard extends StatelessWidget {
     // TODO: implement build
     return GridTile(
       child: InkResponse(
-//        onTap: () => Navigator.of(context).push(episodePage(eposide)),
+        onTap: () => Navigator.of(context).push(videoPage(eposide)),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           child: Stack(
