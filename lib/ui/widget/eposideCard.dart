@@ -36,19 +36,13 @@ class EposideCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     eposide.titleformat,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .subtitle,
+                    style: Theme.of(context).textTheme.subtitle,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
                   ),
                   Text(
                     eposide.longtitle,
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .subtitle,
+                    style: Theme.of(context).textTheme.subtitle,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
                   ),

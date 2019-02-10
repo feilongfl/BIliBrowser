@@ -55,27 +55,21 @@ class VideoCard extends StatelessWidget {
                   Expanded(
                       child: Center(
                           child: Column(
-                            children: <Widget>[
-                              Text(
-                                title,
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .title,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                              Text(
-                                username,
-                                style: Theme
-                                    .of(context)
-                                    .textTheme
-                                    .subtitle,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                            ],
-                          ))),
+                    children: <Widget>[
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      Text(
+                        username,
+                        style: Theme.of(context).textTheme.subtitle,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ],
+                  ))),
                 ],
               ),
             ),

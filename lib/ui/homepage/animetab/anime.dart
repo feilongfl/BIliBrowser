@@ -49,9 +49,7 @@ class AnimeTabState extends State<AnimeTab> {
     return RefreshIndicator(
       onRefresh: () => _getAnimeGlobalList(true),
       child: Container(
-        color: Theme
-            .of(context)
-            .backgroundColor,
+        color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 1),
         child: GridView.builder(
           itemCount: animeglobaltimelineEntity == null

@@ -37,10 +37,7 @@ class AnimeCard extends StatelessWidget {
               ),
               Text(
                 anime.title,
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .subtitle,
+                style: Theme.of(context).textTheme.subtitle,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
               ),

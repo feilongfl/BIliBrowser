@@ -9,9 +9,8 @@ class BiliPlayer extends StatefulWidget {
   BiliPlayer({Key key, this.video_url}) : super(key: key);
 
   @override
-  _BiliPlayerState createState() =>
-      _BiliPlayerState(video_url ??
-          'http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
+  _BiliPlayerState createState() => _BiliPlayerState(video_url ??
+      'http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
 }
 
 class _BiliPlayerState extends State<BiliPlayer> {
@@ -49,8 +48,7 @@ class _BiliPlayerState extends State<BiliPlayer> {
               if (unshowContralBar)
                 barTimer = Timer(
                     Duration(seconds: 3),
-                        () =>
-                        setState(() {
+                    () => setState(() {
                           unshowContralBar = true;
                         }));
               setState(() {

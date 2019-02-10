@@ -16,8 +16,8 @@ class MomentCard extends StatelessWidget {
       this.content,
       this.userface,
       this.username,
-        this.pics,
-        this.picAspectRatio,
+      this.pics,
+      this.picAspectRatio,
       this.onTap})
       : super(key: key);
 
@@ -46,13 +46,12 @@ class MomentCard extends StatelessWidget {
                 childAspectRatio: pics.length == 1 ? picAspectRatio ?? 1 : 1,
 //                crossAxisCount: 3,
                 crossAxisCount:
-                pics.length < 3 ? pics.length : (pics.length == 4 ? 2 : 3),
+                    pics.length < 3 ? pics.length : (pics.length == 4 ? 2 : 3),
                 shrinkWrap: true,
                 primary: false,
                 children: pics
-                    .map((p) =>
-                    GridTile(
-                        child: InkResponse(
+                    .map((p) => GridTile(
+                            child: InkResponse(
                           onTap: () {
                             //todo: 之后做个专门看图片的route
                             showAboutDialog(
@@ -72,7 +71,7 @@ class MomentCard extends StatelessWidget {
                           child: CachedNetworkImage(
                             imageUrl: p,
                             placeholder:
-                            Center(child: CircularProgressIndicator()),
+                                Center(child: CircularProgressIndicator()),
 //                              fit: BoxFit.fill,
                             fit: BoxFit.cover,
                           ),
@@ -99,11 +98,8 @@ class MomentCard extends StatelessWidget {
                       child: Center(
                           child: Text(
                     username,
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .title,
-                            maxLines: 1,
+                    style: Theme.of(context).textTheme.title,
+                    maxLines: 1,
                   ))),
                 ],
               ),

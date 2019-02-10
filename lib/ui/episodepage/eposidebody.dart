@@ -30,7 +30,7 @@ class eposideBodyState extends State<eposideBody> {
         .getFile("https://www.bilibili.com/bangumi/play/ep${anime.epId}");
     var html = await httpStrm.readAsString();
     var jsonStr =
-    RegExp(r"__INITIAL_STATE__=({.*?});").firstMatch(html).group(1);
+        RegExp(r"__INITIAL_STATE__=({.*?});").firstMatch(html).group(1);
 
     if (isShown)
       setState(() {

@@ -14,17 +14,17 @@ class videoPage extends MaterialPageRoute<Null> {
 
   videoPage(this.eposide, this.epinfo)
       : super(builder: (BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black87,
-      appBar: AppBar(
-        title: Text(eposide.titleformat),
-      ),
-      body: VideoBody(
-        eposide: eposide,
-        epinfo: epinfo,
-      ),
-    );
-  });
+          return Scaffold(
+            backgroundColor: Colors.black87,
+            appBar: AppBar(
+              title: Text(eposide.titleformat),
+            ),
+            body: VideoBody(
+              eposide: eposide,
+              epinfo: epinfo,
+            ),
+          );
+        });
 }
 
 class VideoBody extends StatefulWidget {
@@ -89,11 +89,11 @@ class VideoBodyState extends State<VideoBody> {
                 color: Colors.black87,
                 child: video_url.length == 0
                     ? Center(
-                  child: CircularProgressIndicator(),
-                )
+                        child: CircularProgressIndicator(),
+                      )
                     : BiliPlayer(
-                  video_url: video_url[0],
-                )),
+                        video_url: video_url[0],
+                      )),
             Padding(
               padding: EdgeInsets.only(top: 30),
             ),
@@ -112,7 +112,7 @@ class VideoBodyState extends State<VideoBody> {
                         children: <Widget>[
                           CachedNetworkImage(
                             placeholder:
-                            Center(child: CircularProgressIndicator()),
+                                Center(child: CircularProgressIndicator()),
                             imageUrl: "https:" + epinfo.mediainfo.cover,
                           ),
                           Opacity(
@@ -124,10 +124,7 @@ class VideoBodyState extends State<VideoBody> {
                           ),
                           Text(
                             epinfo.epinfo.title,
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .subtitle,
+                            style: Theme.of(context).textTheme.subtitle,
                             overflow: TextOverflow.ellipsis,
                             softWrap: false,
                           ),
@@ -145,27 +142,18 @@ class VideoBodyState extends State<VideoBody> {
                       children: <Widget>[
                         Text(
                           epinfo.mediainfo.title,
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .title,
+                          style: Theme.of(context).textTheme.title,
                         ),
                         Text(
                           eposide.titleformat + ":" + eposide.longtitle,
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .subtitle,
+                          style: Theme.of(context).textTheme.subtitle,
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 10),
                         ),
                         Text(
                           eposide.titleformat + ":" + epinfo.mediainfo.evaluate,
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .body1,
+                          style: Theme.of(context).textTheme.body1,
                         ),
                       ],
                     ),

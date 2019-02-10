@@ -87,7 +87,9 @@ class _TopBarState extends State<TopBar> {
             ),
           ],
           bottom: TabBar(
-            tabs: tabs.map((tab) => tab.tab).toList(), isScrollable: true,),
+            tabs: tabs.map((tab) => tab.tab).toList(),
+            isScrollable: true,
+          ),
         ),
         body: TabBarView(children: tabs.map((tab) => tab.widget).toList()),
         drawer: Drawer(

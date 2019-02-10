@@ -18,10 +18,7 @@ class eposideDesc extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
             child: Text(
               "   ${epInfo.mediainfo.evaluate}",
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .body2,
+              style: Theme.of(context).textTheme.body2,
             ),
           ),
           Padding(

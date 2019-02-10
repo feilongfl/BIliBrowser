@@ -26,7 +26,7 @@ class ReferceCard extends StatelessWidget {
       this.ori_user,
       this.ori_uface,
       this.ori_content,
-        this.ori_picAspectRatio,
+      this.ori_picAspectRatio,
       this.onTap})
       : super(key: key);
 
@@ -77,10 +77,7 @@ class ReferceCard extends StatelessWidget {
                     child: Center(
                         child: Text(
                   username,
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .title,
+                  style: Theme.of(context).textTheme.title,
                 ))),
               ],
             ),

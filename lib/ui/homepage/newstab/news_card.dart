@@ -57,8 +57,8 @@ class attentionVideoInfoItem extends StatelessWidget {
     }
     return Center(
         child: Text(
-          "Unknow Type: ${card.desc.type}",
-          style: TextStyle(color: Colors.white),
-        ));
+      "Unknow Type: ${card.desc.type}",
+      style: TextStyle(color: Colors.white),
+    ));
   }
 }

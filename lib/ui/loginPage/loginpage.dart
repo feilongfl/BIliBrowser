@@ -61,20 +61,20 @@ class loginState extends State<loginWiget> {
                       onPressed: isLogging
                           ? null
                           : () {
-                        loginBiliBili(_userCookiesController.text);
-                      },
+                              loginBiliBili(_userCookiesController.text);
+                            },
                       child: Padding(
                         padding: EdgeInsets.all(10.0),
                         child: (isLogging)
                             ? CircularProgressIndicator(
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.white),
-                        )
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              )
                             : Text(
-                          'Login',
-                          style: TextStyle(
-                              color: Colors.white, fontSize: 16.0),
-                        ),
+                                'Login',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 16.0),
+                              ),
                       )),
                 ),
               ),
@@ -141,6 +141,6 @@ class loginState extends State<loginWiget> {
 class loginPage extends MaterialPageRoute<Null> {
   loginPage()
       : super(builder: (BuildContext context) {
-    return loginWiget();
-  });
+          return loginWiget();
+        });
 }

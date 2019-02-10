@@ -40,19 +40,20 @@ class AttentionCardType1Origin2Item {
   String category;
   int reply;
 
-  AttentionCardType1Origin2Item({this.setting,
-    this.role,
-    this.isFav,
-    this.description,
-    this.source,
-    this.title,
-    this.atControl,
-    this.picture,
-    this.picturesCount,
-    this.uploadTime,
-    this.id,
-    this.category,
-    this.reply});
+  AttentionCardType1Origin2Item(
+      {this.setting,
+      this.role,
+      this.isFav,
+      this.description,
+      this.source,
+      this.title,
+      this.atControl,
+      this.picture,
+      this.picturesCount,
+      this.uploadTime,
+      this.id,
+      this.category,
+      this.reply});
 
   AttentionCardType1Origin2Item.fromJson(Map<String, dynamic> json) {
     setting = json['settings'] != null
@@ -189,12 +190,13 @@ class AttentionCardType1Origin2UserVip {
   String dueremark;
   String vipstatuswarn;
 
-  AttentionCardType1Origin2UserVip({this.vipduedate,
-    this.viptype,
-    this.accessstatu,
-    this.vipstatu,
-    this.dueremark,
-    this.vipstatuswarn});
+  AttentionCardType1Origin2UserVip(
+      {this.vipduedate,
+      this.viptype,
+      this.accessstatu,
+      this.vipstatu,
+      this.dueremark,
+      this.vipstatuswarn});
 
   AttentionCardType1Origin2UserVip.fromJson(Map<String, dynamic> json) {
     vipduedate = json['vipDueDate'];

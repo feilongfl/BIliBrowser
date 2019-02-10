@@ -29,7 +29,7 @@ class liveListState extends State<liveList> {
 
   Future<void> getAttentionInfo(bool force) async {
     var jsonStr =
-    await BiliBiliApi.HttpPrefGetAuto(attentionUrl, attentionPref, true);
+        await BiliBiliApi.HttpPrefGetAuto(attentionUrl, attentionPref, true);
     if (isShown)
       setState(() {
         this.attention = Attention.fromJson(json.decode(jsonStr));
@@ -56,31 +56,28 @@ class liveListState extends State<liveList> {
     return !loaded
         ? Center(child: CircularProgressIndicator())
         : RefreshIndicator(
-      //todo: 下拉加载更多
-      onRefresh: () => getAttentionInfo(true),
-      child: Container(
-        color: Theme
-            .of(context)
-            .backgroundColor,
-        padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
-        child: !loaded
-            ? Center(
-          child: Text("loading"),
-        )
-            : ListView.separated(
-            separatorBuilder: (context, index) =>
-                Divider(
-                  color: Colors.white,
-                ),
-            itemCount: this.attention.data.card.length,
+            //todo: 下拉加载更多
+            onRefresh: () => getAttentionInfo(true),
+            child: Container(
+              color: Theme.of(context).backgroundColor,
+              padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
+              child: !loaded
+                  ? Center(
+                      child: Text("loading"),
+                    )
+                  : ListView.separated(
+                      separatorBuilder: (context, index) => Divider(
+                            color: Colors.white,
+                          ),
+                      itemCount: this.attention.data.card.length,
 //                  padding: EdgeInsets.all(16),
 //                  padding: EdgeInsets.only(top: 5, bottom: 5),
-            itemBuilder: (BuildContext context, int index) {
-              return Center(
-                  child: attentionVideoInfoItem(
-                      card: this.attention.data.card[index]));
-            }),
-      ),
-    );
+                      itemBuilder: (BuildContext context, int index) {
+                        return Center(
+                            child: attentionVideoInfoItem(
+                                card: this.attention.data.card[index]));
+                      }),
+            ),
+          );
   }
 }
