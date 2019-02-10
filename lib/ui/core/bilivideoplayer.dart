@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -8,6 +10,8 @@ class BiliPlayer extends StatefulWidget {
 
 class _BiliPlayerState extends State<BiliPlayer> {
   VideoPlayerController _controller;
+  bool showContralBar = true;
+  Timer barTimer;
 
   @override
   void initState() {
@@ -20,49 +24,87 @@ class _BiliPlayerState extends State<BiliPlayer> {
       });
   }
 
+  void play_pause() {
+    setState(() {
+      _controller.value.isPlaying ? _controller.pause() : _controller.play();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return InkResponse(
-      onDoubleTap: () {
-        setState(() {
-          _controller.value.isPlaying
-              ? _controller.pause()
-              : _controller.play();
-        });
-      },
-      child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: <Widget>[
-            Center(
+    return Stack(
+        alignment: AlignmentDirectional.bottomCenter,
+        children: <Widget>[
+          InkResponse(
+            onTap: (){
+              barTimer = Timer( Duration(seconds: 3), (){showContralBar = false;});
+              setState(() {
+                showContralBar = !showContralBar;
+              });
+            },
+            onDoubleTap: () => play_pause(),
+            child: Center(
               child: _controller.value.initialized
                   ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              )
+                      aspectRatio: _controller.value.aspectRatio,
+                      child: VideoPlayer(_controller),
+                    )
                   : Container(),
             ),
-            Container(
-              height: 28,
-              width: 200,
-              color: Colors.black,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  OutlineButton(child: Icon(
-                    _controller.value.isPlaying ? Icons.pause : Icons
-                        .play_arrow, color: Colors.white,
-                  ),),
-                  Text("test"),
-                  Text("test"),
-                  Flexible(child: Container(),),
-                  Text("test"),
-                  Text("test"),
-                ],
+          ),
+          Offstage(
+            offstage: showContralBar,
+            child: Opacity(
+              opacity: 0.7,
+              child: Container(
+                padding: EdgeInsets.only(top: 5),
+                height: 45,
+//                width: 200,
+                color: Colors.black,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        InkResponse(
+                          onTap: () => play_pause(),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Center(
+                              child: Icon(
+                                _controller.value.isPlaying
+                                    ? Icons.pause
+                                    : Icons.play_arrow,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: Container(),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(right: 5),
+                          child: Center(
+                            child: Icon(
+                              Icons.fullscreen,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    VideoProgressIndicator(
+                      _controller,
+                      allowScrubbing: true,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ]),
-    );
+          ),
+        ]);
   }
 
 //  @override
