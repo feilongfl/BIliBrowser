@@ -2,6 +2,7 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card2.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card256.dart';
+import 'package:bilibrowser/ui/homepage/newstab/news_card4.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card512.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card64.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card8.dart';
@@ -22,6 +23,11 @@ class attentionVideoInfoItem extends StatelessWidget {
         break;
       case 2:
         return attentionVideoInfoItemType2(
+          attentionDataCard: card,
+        );
+        break;
+      case 4:
+        return attentionVideoInfoItemType4(
           attentionDataCard: card,
         );
         break;
