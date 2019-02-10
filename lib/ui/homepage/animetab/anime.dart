@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeGlobalTimeline_entity.dart';
 import 'package:bilibrowser/core/http.dart';
-import 'package:bilibrowser/ui/homepage/animetab/animeCard.dart';
+import 'package:bilibrowser/ui/widget/animeCard.dart';
 import 'package:flutter/material.dart';
 
 class AnimeTab extends StatefulWidget {
