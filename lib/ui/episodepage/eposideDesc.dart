@@ -39,11 +39,13 @@ class eposideDesc extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.all(4),
                   child: InkResponse(
-                    onTap: () => Navigator.of(context).push(videoPage(ep)),
+                    onTap: () =>
+                        Navigator.of(context).push(videoPage(ep, epInfo)),
                     child: Container(
                       width: 235.0,
                       child: EposideCard(
                         eposide: ep,
+                        epinfo: epInfo,
                       ),
                     ),
                   ),

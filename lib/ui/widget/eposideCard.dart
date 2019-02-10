@@ -4,16 +4,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EposideCard extends StatelessWidget {
-  EposideCard({Key key, this.eposide}) : super(key: key);
+  EposideCard({Key key, this.eposide, this.epinfo}) : super(key: key);
 
-  EposideInfoEplist eposide;
+  final EposideInfo epinfo;
+  final EposideInfoEplist eposide;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return GridTile(
       child: InkResponse(
-        onTap: () => Navigator.of(context).push(videoPage(eposide)),
+        onTap: () => Navigator.of(context).push(videoPage(eposide, epinfo)),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           child: Stack(
