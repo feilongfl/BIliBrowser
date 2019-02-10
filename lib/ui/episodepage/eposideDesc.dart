@@ -1,4 +1,5 @@
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
+import 'package:bilibrowser/ui/widget/eposideCard.dart';
 import 'package:flutter/material.dart';
 
 class eposideDesc extends StatelessWidget {
@@ -16,17 +17,25 @@ class eposideDesc extends StatelessWidget {
             "   ${epInfo.mediainfo.evaluate}",
             style: Theme.of(context).textTheme.body2,
           ),
+          Padding(
+            padding: EdgeInsets.only(top: 20),
+          ),
           Container(
-            height: 180,
+            height: 155,
+            color: Colors.white.withOpacity(0.3),
             child: ListView(
               scrollDirection: Axis.horizontal,
+              controller: ScrollController(
+                initialScrollOffset: (235 * epInfo.epinfo.i).toDouble(),
+              ),
               children: epInfo.eplist.map((ep) {
                 return Padding(
                   padding: const EdgeInsets.all(4),
                   child: Container(
                     width: 235.0,
-                    color: Colors.red,
-                    child: Text(ep.title),
+                    child: EposideCard(
+                      eposide: ep,
+                    ),
                   ),
                 );
               }).toList(),

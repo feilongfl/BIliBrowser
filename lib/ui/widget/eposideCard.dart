@@ -18,27 +18,39 @@ class EposideCard extends StatelessWidget {
           child: Stack(
             alignment: AlignmentDirectional.bottomCenter,
             children: <Widget>[
-//            FadeInImage.assetNetwork(
-//              placeholder: 'res/images/Placeholder.png',
-//              image: anime.cover,
-//              fit: BoxFit.fill,
-//            ),
               CachedNetworkImage(
                 placeholder: Center(child: CircularProgressIndicator()),
-                imageUrl: eposide.cover,
+                imageUrl: "https:${eposide.cover}",
               ),
               Opacity(
                 opacity: 0.3,
                 child: Container(
-                  height: 24,
+                  height: 44,
                   color: Colors.black,
                 ),
               ),
-              Text(
-                eposide.title,
-                style: Theme.of(context).textTheme.subtitle,
-                overflow: TextOverflow.ellipsis,
-                softWrap: false,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    eposide.titleformat,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .subtitle,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  ),
+                  Text(
+                    eposide.longtitle,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .subtitle,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  ),
+                ],
               ),
             ],
           ),

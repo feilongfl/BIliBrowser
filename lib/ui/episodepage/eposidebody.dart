@@ -61,7 +61,7 @@ class eposideBodyState extends State<eposideBody> {
     } else {
       return Container(
           height: 400,
-          color: Colors.amber.withOpacity(0.3),
+//          color: Colors.amber.withOpacity(0.3),
           child: eposideDesc(epInfo: epInfo));
     }
   }
