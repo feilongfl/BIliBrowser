@@ -77,7 +77,7 @@ class episodeHead extends StatelessWidget {
                     style: Theme
                         .of(context)
                         .textTheme
-                        .title,
+                        .headline,
                     overflow: TextOverflow.ellipsis,
                     softWrap: false,
                     maxLines: 2,

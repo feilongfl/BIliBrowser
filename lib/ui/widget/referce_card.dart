@@ -12,6 +12,7 @@ class ReferceCard extends StatelessWidget {
   final ori_user;
   final ori_uface;
   final ori_content;
+  final ori_picAspectRatio;
   final GestureTapCallback onTap;
 
   ReferceCard(
@@ -25,6 +26,7 @@ class ReferceCard extends StatelessWidget {
       this.ori_user,
       this.ori_uface,
       this.ori_content,
+        this.ori_picAspectRatio,
       this.onTap})
       : super(key: key);
 
@@ -53,6 +55,7 @@ class ReferceCard extends StatelessWidget {
                   username: ori_user,
                   userface: ori_uface,
                   pics: ori_pics,
+                  picAspectRatio: ori_picAspectRatio,
                 )),
             Padding(
               padding: EdgeInsets.only(top: 15),
@@ -74,10 +77,10 @@ class ReferceCard extends StatelessWidget {
                     child: Center(
                         child: Text(
                   username,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                          style: Theme
+                              .of(context)
+                              .textTheme
+                              .title,
                 ))),
               ],
             ),

@@ -6,6 +6,7 @@ import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin2_entity.dart
 import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin8_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type256_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type2_entity.dart';
+import 'package:bilibrowser/bilibiliApi/attention_card_type512_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type64_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_card_type8_entity.dart';
 import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
@@ -30,6 +31,8 @@ class EntityFactory {
       return AttentionCardType256.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType2") {
       return AttentionCardType2.fromJson(json) as T;
+    } else if (T.toString() == "AttentionCardType512") {
+      return AttentionCardType512.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType64") {
       return AttentionCardType64.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType8") {

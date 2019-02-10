@@ -7,6 +7,7 @@ class MomentCard extends StatelessWidget {
   final title;
   final content;
   final List<String> pics;
+  final picAspectRatio;
   final GestureTapCallback onTap;
 
   MomentCard(
@@ -16,6 +17,7 @@ class MomentCard extends StatelessWidget {
       this.userface,
       this.username,
         this.pics,
+        this.picAspectRatio,
       this.onTap})
       : super(key: key);
 
@@ -41,7 +43,7 @@ class MomentCard extends StatelessWidget {
               child: GridView.count(
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
-                childAspectRatio: 1,
+                childAspectRatio: pics.length == 1 ? picAspectRatio ?? 1 : 1,
 //                crossAxisCount: 3,
                 crossAxisCount: pics.length < 3 ? pics.length : 3,
                 shrinkWrap: true,
@@ -49,11 +51,29 @@ class MomentCard extends StatelessWidget {
                 children: pics
                     .map((p) =>
                     GridTile(
-                        child: CachedNetworkImage(
+                        child: InkResponse(
+                          onTap: () {
+                            //todo: 之后做个专门看图片的route
+                            showAboutDialog(
+                                context: context, children: <Widget>[
+                              Center(
+                                child: CachedNetworkImage(
+                                  imageUrl: p,
+                                  placeholder:
+                                  Center(child: CircularProgressIndicator()),
+//                              fit: BoxFit.fill,
+                                  fit: BoxFit.fill,
+                                ),
+                              )
+                            ]);
+                          },
+                          child: CachedNetworkImage(
                           imageUrl: p,
                           placeholder:
                           Center(child: CircularProgressIndicator()),
-                          fit: BoxFit.fill,
+//                              fit: BoxFit.fill,
+                            fit: BoxFit.cover,
+                          ),
                         )))
                     .toList(),
               ),
@@ -77,10 +97,11 @@ class MomentCard extends StatelessWidget {
                       child: Center(
                           child: Text(
                     username,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .title,
+                            maxLines: 1,
                   ))),
                 ],
               ),

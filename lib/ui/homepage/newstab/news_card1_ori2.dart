@@ -27,6 +27,8 @@ class attentionVideoInfoItemType1Ori2 extends StatelessWidget {
       ori_user: ori.user.name ?? "",
       ori_title: ori.item.title ?? "",
       ori_pics: pics,
+      ori_picAspectRatio: pics.length > 0 ? (ori.item.picture[0].imgWidth /
+          ori.item.picture[0].imgHeight) : 1,
     );
   }
 }

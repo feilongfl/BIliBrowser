@@ -2,6 +2,7 @@ import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card2.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card256.dart';
+import 'package:bilibrowser/ui/homepage/newstab/news_card512.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card64.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card8.dart';
 import 'package:flutter/material.dart';
@@ -39,10 +40,16 @@ class attentionVideoInfoItem extends StatelessWidget {
           attentionDataCard: card,
         );
         break;
+      case 512:
+        return attentionVideoInfoItemType512(
+          attentionDataCard: card,
+        );
+        break;
 
       default:
         break;
     }
-    return Center(child: Text("Unknow Type: ${card.desc.type}"));
+    return Center(child: Text("Unknow Type: ${card.desc.type}",
+      style: TextStyle(color: Colors.white),));
   }
 }

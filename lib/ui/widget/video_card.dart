@@ -49,15 +49,30 @@ class VideoCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Padding(padding: EdgeInsets.only(left: 8),),
                   Expanded(
                       child: Center(
-                          child: Text(
+                          child: Column(
+                            children: <Widget>[
+                              Text(
                     title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ))),
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ), Text(
+                                username,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .subtitle,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ],
+                          ))),
                 ],
               ),
             ),

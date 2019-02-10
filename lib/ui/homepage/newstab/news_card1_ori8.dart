@@ -27,6 +27,7 @@ class attentionVideoInfoItemType1Ori8 extends StatelessWidget {
       ori_user: ori.owner.name ?? "",
       ori_title: ori.title ?? "",
       ori_pics: [ori.pic],
+      ori_picAspectRatio: 16 / 9,
     );
     return Center(
         child: Text(
