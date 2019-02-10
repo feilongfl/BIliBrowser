@@ -4,20 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class BiliPlayer extends StatefulWidget {
+  final String video_url;
+
+  BiliPlayer({Key key, this.video_url}) : super(key: key);
+
   @override
-  _BiliPlayerState createState() => _BiliPlayerState();
+  _BiliPlayerState createState() =>
+      _BiliPlayerState(video_url ??
+          'http://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
 }
 
 class _BiliPlayerState extends State<BiliPlayer> {
   VideoPlayerController _controller;
   bool unshowContralBar = true;
   Timer barTimer;
+  final String video_url;
+
+  _BiliPlayerState(this.video_url) : super();
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4')
+    _controller = VideoPlayerController.network(video_url)
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
@@ -38,12 +46,13 @@ class _BiliPlayerState extends State<BiliPlayer> {
         children: <Widget>[
           InkResponse(
             onTap: () {
-              barTimer = Timer(
-                  Duration(seconds: 3),
-                      () =>
-                      setState(() {
-                        unshowContralBar = true;
-                      }));
+              if (unshowContralBar)
+                barTimer = Timer(
+                    Duration(seconds: 3),
+                        () =>
+                        setState(() {
+                          unshowContralBar = true;
+                        }));
               setState(() {
                 unshowContralBar = !unshowContralBar;
               });

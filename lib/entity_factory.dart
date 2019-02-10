@@ -14,6 +14,7 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/video_info_entity.dart';
 
 class EntityFactory {
   static T generateOBJ<T>(json) {
@@ -51,6 +52,8 @@ class EntityFactory {
       return LiveInfoEntity.fromJson(json) as T;
     } else if (T.toString() == "UserinfoEntity") {
       return UserinfoEntity.fromJson(json) as T;
+    } else if (T.toString() == "VideoInfo") {
+      return VideoInfo.fromJson(json) as T;
     } else {
       return null;
     }
