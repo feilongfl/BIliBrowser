@@ -10,7 +10,7 @@ class BiliPlayer extends StatefulWidget {
 
 class _BiliPlayerState extends State<BiliPlayer> {
   VideoPlayerController _controller;
-  bool showContralBar = true;
+  bool unshowContralBar = true;
   Timer barTimer;
 
   @override
@@ -37,10 +37,15 @@ class _BiliPlayerState extends State<BiliPlayer> {
         alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
           InkResponse(
-            onTap: (){
-              barTimer = Timer( Duration(seconds: 3), (){showContralBar = false;});
+            onTap: () {
+              barTimer = Timer(
+                  Duration(seconds: 3),
+                      () =>
+                      setState(() {
+                        unshowContralBar = true;
+                      }));
               setState(() {
-                showContralBar = !showContralBar;
+                unshowContralBar = !unshowContralBar;
               });
             },
             onDoubleTap: () => play_pause(),
@@ -54,7 +59,7 @@ class _BiliPlayerState extends State<BiliPlayer> {
             ),
           ),
           Offstage(
-            offstage: showContralBar,
+            offstage: unshowContralBar,
             child: Opacity(
               opacity: 0.7,
               child: Container(
