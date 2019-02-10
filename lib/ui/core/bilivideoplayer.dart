@@ -22,30 +22,75 @@ class _BiliPlayerState extends State<BiliPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black87,
-      body: Center(
-        child: _controller.value.initialized
-            ? AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
-          child: VideoPlayer(_controller),
-        )
-            : Container(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
-      ),
+    // TODO: implement build
+    return InkResponse(
+      onDoubleTap: () {
+        setState(() {
+          _controller.value.isPlaying
+              ? _controller.pause()
+              : _controller.play();
+        });
+      },
+      child: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: <Widget>[
+            Center(
+              child: _controller.value.initialized
+                  ? AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              )
+                  : Container(),
+            ),
+            Container(
+              height: 28,
+              width: 200,
+              color: Colors.black,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  OutlineButton(child: Icon(
+                    _controller.value.isPlaying ? Icons.pause : Icons
+                        .play_arrow, color: Colors.white,
+                  ),),
+                  Text("test"),
+                  Text("test"),
+                  Flexible(child: Container(),),
+                  Text("test"),
+                  Text("test"),
+                ],
+              ),
+            ),
+          ]),
     );
   }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      backgroundColor: Colors.black87,
+//      body: Center(
+//        child: _controller.value.initialized
+//            ? AspectRatio(
+//          aspectRatio: _controller.value.aspectRatio,
+//          child: VideoPlayer(_controller),
+//        )
+//            : Container(),
+//      ),
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: () {
+//          setState(() {
+//            _controller.value.isPlaying
+//                ? _controller.pause()
+//                : _controller.play();
+//          });
+//        },
+//        child: Icon(
+//          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+//        ),
+//      ),
+//    );
+//  }
 
   @override
   void dispose() {
