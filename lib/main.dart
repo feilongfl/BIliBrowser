@@ -1,12 +1,17 @@
 import 'package:bilibrowser/generated/i18n.dart';
 import 'package:bilibrowser/ui/homepage/topbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    CacheManager.inBetweenCleans = new Duration(days: 7);
+    CacheManager.maxAgeCacheObject = new Duration(days: 14);
+    CacheManager.maxNrOfCacheObjects = 1000;
+
     return MaterialApp(
       localizationsDelegates: [S.delegate],
       supportedLocales: S.delegate.supportedLocales,
@@ -22,6 +27,7 @@ class MyApp extends StatelessWidget {
           headline: TextStyle(fontSize: 36.0, color: Colors.white),
           title: TextStyle(fontSize: 22.0, color: Colors.white),
           body1: TextStyle(fontSize: 14.0, color: Colors.white),
+          body2: TextStyle(fontSize: 16.0, color: Colors.white),
           subtitle: TextStyle(fontSize: 14.0, color: Colors.white),
         ),
       ),

@@ -36,7 +36,8 @@ class BiliBiliApi {
   static HttpGetAndSavePref(String url, String pref) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var httpResult = await HttpGet(url) ?? "";
-    prefs.setString(pref, httpResult);
+    if (httpResult != "" && (pref != "" || pref != null))
+      prefs.setString(pref, httpResult);
     return httpResult;
   }
 

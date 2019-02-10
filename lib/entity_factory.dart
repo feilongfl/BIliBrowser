@@ -11,6 +11,7 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type64_entity.d
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type8_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
 
 class EntityFactory {
@@ -41,6 +42,8 @@ class EntityFactory {
       return Attention.fromJson(json) as T;
     } else if (T.toString() == "AttentionExtendJson") {
       return AttentionExtendJson.fromJson(json) as T;
+    } else if (T.toString() == "EposideInfo") {
+      return EposideInfo.fromJson(json) as T;
     } else if (T.toString() == "LiveInfoEntity") {
       return LiveInfoEntity.fromJson(json) as T;
     } else if (T.toString() == "UserinfoEntity") {
