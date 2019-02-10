@@ -1,6 +1,6 @@
 //https://bangumi.bilibili.com/api/timeline_v2_cn
 
-import 'package:bilibrowser/bilibiliApi/AnimeResult.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeResult.dart';
 
 class AnimecntimelineEntity {
   List<AnimeResult> result;

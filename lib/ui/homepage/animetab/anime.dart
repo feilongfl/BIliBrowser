@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
 
-import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeGlobalTimeline_entity.dart';
+import 'package:bilibrowser/core/http.dart';
 import 'package:bilibrowser/ui/homepage/animetab/animeCard.dart';
 import 'package:flutter/material.dart';
 
@@ -11,63 +10,64 @@ class AnimeTab extends StatefulWidget {
   State<StatefulWidget> createState() => new AnimeTabState();
 }
 
-AnimeglobaltimelineEntity animeglobaltimelineEntity;
-
 class AnimeTabState extends State<AnimeTab> {
+  AnimeglobaltimelineEntity animeglobaltimelineEntity;
   static const animeGlobalUrl =
       "https://bangumi.bilibili.com/api/timeline_v2_global";
+  var isShown = false;
+  static const animeGlobalPref = "animeGlobal";
 
-//  List<String> animeGlobalList = ["1", "2", "Third", "4"];
-  AnimeglobaltimelineEntity _animeglobaltimelineEntity =
-      animeglobaltimelineEntity;
+  Future<void> _getAnimeGlobalList(bool force) async {
+    var jsonStr = await BiliBiliApi.HttpPrefGetAuto(
+        animeGlobalUrl, animeGlobalPref, force);
+    if (isShown)
+      setState(() {
+        animeglobaltimelineEntity =
+            AnimeglobaltimelineEntity.fromJson(json.decode(jsonStr));
+      });
+    if (!force) _getAnimeGlobalList(true);
+  }
 
-  Future<void> _getAnimeGlobalList() async {
-    var httpClient = new HttpClient();
-//    String result;
-    try {
-      log(animeGlobalUrl);
-      var request = await httpClient.getUrl(Uri.parse(animeGlobalUrl));
-      var response = await request.close();
-      if (response.statusCode == HttpStatus.ok) {
-        var jsonStr = await response.transform(utf8.decoder).join();
-        var data = json.decode(jsonStr);
-//        result = data['origin'];
-        setState(() {
-          _animeglobaltimelineEntity = AnimeglobaltimelineEntity.fromJson(data);
-          animeglobaltimelineEntity = _animeglobaltimelineEntity;
-        });
-      } else {
-        log('Error getting Global Anime List:\nHttp status ${response
-            .statusCode}');
-      }
-    } catch (exception) {
-      log('Failed getting Gloabal Anime List');
-    }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    isShown = true;
+    _getAnimeGlobalList(false);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    isShown = false;
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _getAnimeGlobalList();
+    _getAnimeGlobalList(true);
     return RefreshIndicator(
-      onRefresh: _getAnimeGlobalList,
+      onRefresh: () => _getAnimeGlobalList(true),
       child: Container(
-        color: Colors.black87,
+        color: Theme
+            .of(context)
+            .backgroundColor,
         padding: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 1),
         child: GridView.builder(
-          itemCount: _animeglobaltimelineEntity == null
+          itemCount: animeglobaltimelineEntity == null
               ? 1
-              : _animeglobaltimelineEntity.result.length,
+              : animeglobaltimelineEntity.result.length,
           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: _animeglobaltimelineEntity == null ? 1 : 3,
+            crossAxisCount: animeglobaltimelineEntity == null ? 1 : 3,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             childAspectRatio: 0.75,
           ),
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
-            if (_animeglobaltimelineEntity != null) {
+            if (animeglobaltimelineEntity != null) {
               return AnimeCard(
-                anime: _animeglobaltimelineEntity.result[index],
+                anime: animeglobaltimelineEntity.result[index],
               );
             } else
               return new Center(child: CircularProgressIndicator());

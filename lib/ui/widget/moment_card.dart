@@ -45,7 +45,8 @@ class MomentCard extends StatelessWidget {
                 crossAxisSpacing: 8,
                 childAspectRatio: pics.length == 1 ? picAspectRatio ?? 1 : 1,
 //                crossAxisCount: 3,
-                crossAxisCount: pics.length < 3 ? pics.length : 3,
+                crossAxisCount:
+                pics.length < 3 ? pics.length : (pics.length == 4 ? 2 : 3),
                 shrinkWrap: true,
                 primary: false,
                 children: pics
@@ -55,22 +56,23 @@ class MomentCard extends StatelessWidget {
                           onTap: () {
                             //todo: 之后做个专门看图片的route
                             showAboutDialog(
-                                context: context, children: <Widget>[
-                              Center(
-                                child: CachedNetworkImage(
-                                  imageUrl: p,
-                                  placeholder:
-                                  Center(child: CircularProgressIndicator()),
+                                context: context,
+                                children: <Widget>[
+                                  Center(
+                                    child: CachedNetworkImage(
+                                      imageUrl: p,
+                                      placeholder: Center(
+                                          child: CircularProgressIndicator()),
 //                              fit: BoxFit.fill,
-                                  fit: BoxFit.fill,
-                                ),
-                              )
-                            ]);
+                                      fit: BoxFit.fill,
+                                    ),
+                                  )
+                                ]);
                           },
                           child: CachedNetworkImage(
-                          imageUrl: p,
-                          placeholder:
-                          Center(child: CircularProgressIndicator()),
+                            imageUrl: p,
+                            placeholder:
+                            Center(child: CircularProgressIndicator()),
 //                              fit: BoxFit.fill,
                             fit: BoxFit.cover,
                           ),

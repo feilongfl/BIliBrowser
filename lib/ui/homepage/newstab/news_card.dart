@@ -1,4 +1,4 @@
-import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card2.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card256.dart';
@@ -49,7 +49,10 @@ class attentionVideoInfoItem extends StatelessWidget {
       default:
         break;
     }
-    return Center(child: Text("Unknow Type: ${card.desc.type}",
-      style: TextStyle(color: Colors.white),));
+    return Center(
+        child: Text(
+          "Unknow Type: ${card.desc.type}",
+          style: TextStyle(color: Colors.white),
+        ));
   }
 }

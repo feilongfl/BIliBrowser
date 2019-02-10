@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_card_type256_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_extend_json_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type256_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
 import 'package:bilibrowser/ui/widget/video_card.dart';
 import 'package:flutter/material.dart';
 

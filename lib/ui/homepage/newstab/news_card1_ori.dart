@@ -1,4 +1,4 @@
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1_ori2.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1_ori8.dart';
 import 'package:flutter/material.dart';

@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/live_info_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
 import 'package:bilibrowser/core/http.dart';
 import 'package:bilibrowser/core/launchUri.dart';
 import 'package:bilibrowser/ui/widget/video_card.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class liveTab extends StatelessWidget {
   @override
@@ -22,46 +21,33 @@ class liveList extends StatefulWidget {
 
 class liveListState extends State<liveList> {
   LiveInfoEntity liveList;
-
-  void getLiveInfoFromInternet() async {
-    var jsonStr = await BiliBiliApi.Get(
-        "https://api.live.bilibili.com/relation/v1/feed/feed_list");
-    setState(() {
-      this.liveList = LiveInfoEntity.fromJson(json.decode(jsonStr));
-    });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("liveList", jsonStr);
-  }
-
-  getLiveInfoFromPred() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String pref = prefs.getString("liveList") ?? "";
-    if (pref == "") {
-      getLiveInfoFromInternet();
-      return;
-    }
-    setState(() {
-      this.liveList = LiveInfoEntity.fromJson(json.decode(pref));
-    });
-  }
+  static const liveurl =
+      "https://api.live.bilibili.com/relation/v1/feed/feed_list";
+  static const livePref = "liveList";
+  var isShown = false;
 
   Future<void> getLiveInfo(bool force) async {
-    if (force)
-      getLiveInfoFromInternet();
-    else if (liveList == null)
-      getLiveInfoFromPred();
-    else if (liveList.code != 0)
-      getLiveInfoFromPred();
-    else {
-      getLiveInfoFromPred();
-    }
+    var info = await BiliBiliApi.HttpPrefGetAuto(liveurl, livePref, force);
+    if (isShown)
+      setState(() {
+        this.liveList = LiveInfoEntity.fromJson(json.decode(info));
+      });
+    if (!force) getLiveInfo(true);
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    isShown = true;
     getLiveInfo(false);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    isShown = false;
+    super.dispose();
   }
 
   @override
@@ -72,7 +58,9 @@ class liveListState extends State<liveList> {
         : RefreshIndicator(
             onRefresh: () => getLiveInfo(true),
             child: Container(
-              color: Colors.black87,
+              color: Theme
+                  .of(context)
+                  .backgroundColor,
               padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
               child: ListView.separated(
                   separatorBuilder: (context, index) => Divider(

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin8_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_extend_json_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin8_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card1_ori.dart';
 import 'package:flutter/material.dart';
 

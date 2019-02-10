@@ -1,4 +1,4 @@
-import 'package:bilibrowser/bilibiliApi/AnimeResult.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeResult.dart';
 import 'package:bilibrowser/ui/episodepage/episodepage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -37,10 +37,10 @@ class AnimeCard extends StatelessWidget {
               ),
               Text(
                 anime.title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style: Theme
+                    .of(context)
+                    .textTheme
+                    .subtitle,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
               ),

@@ -1,8 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:cookie_jar/cookie_jar.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/UserInfo_entity.dart';
+import 'package:bilibrowser/core/http.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class loginWiget extends StatefulWidget {
@@ -116,10 +117,20 @@ class loginState extends State<loginWiget> {
     });
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('cookies', cookiesStr);
-    Directory appDocDir = await getApplicationDocumentsDirectory();
-    var cj = new PersistCookieJar(appDocDir.path);
-    cj.saveFromResponse(
-        Uri.parse("https://.bilibili.com/"), parseCookies(cookiesStr));
+//    Directory appDocDir = await getApplicationDocumentsDirectory();
+//    var cj = new PersistCookieJar(appDocDir.path);
+//    cj.saveFromResponse(
+//        Uri.parse("https://.bilibili.com/"), parseCookies(cookiesStr));
+    var userinfoStr = await BiliBiliApi.HttpPrefGetAuto(
+        "https://api.bilibili.com/x/web-interface/nav", "userinfo", true);
+    UserinfoEntity userinfo = json.decode(userinfoStr);
+    if (userinfo.code == 0) {
+      await prefs.setString('userName', userinfo.data.uname);
+      await prefs.setInt('userLevel', userinfo.data.levelInfo.currentLevel);
+      await prefs.setString('userFace', userinfo.data.face);
+      await prefs.setInt("userMid", userinfo.data.mid);
+    }
+
     setState(() {
       isLogging = false;
     });

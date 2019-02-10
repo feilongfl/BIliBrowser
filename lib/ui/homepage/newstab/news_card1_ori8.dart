@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin8_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin8_entity.dart';
 import 'package:bilibrowser/ui/widget/referce_card.dart';
 import 'package:flutter/material.dart';
 

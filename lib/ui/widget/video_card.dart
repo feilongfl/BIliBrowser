@@ -27,11 +27,11 @@ class VideoCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              height: 230,
+              height: 220,
               child: CachedNetworkImage(
                 imageUrl: cover,
                 placeholder: Center(child: CircularProgressIndicator()),
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
             Padding(
@@ -49,20 +49,23 @@ class VideoCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(left: 8),),
+                  Padding(
+                    padding: EdgeInsets.only(left: 8),
+                  ),
                   Expanded(
                       child: Center(
                           child: Column(
                             children: <Widget>[
                               Text(
-                    title,
+                                title,
                                 style: Theme
                                     .of(context)
                                     .textTheme
                                     .title,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                              ), Text(
+                              ),
+                              Text(
                                 username,
                                 style: Theme
                                     .of(context)

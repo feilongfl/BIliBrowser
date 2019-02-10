@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin2_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin2_entity.dart';
 import 'package:bilibrowser/ui/widget/referce_card.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +27,9 @@ class attentionVideoInfoItemType1Ori2 extends StatelessWidget {
       ori_user: ori.user.name ?? "",
       ori_title: ori.item.title ?? "",
       ori_pics: pics,
-      ori_picAspectRatio: pics.length > 0 ? (ori.item.picture[0].imgWidth /
-          ori.item.picture[0].imgHeight) : 1,
+      ori_picAspectRatio: pics.length > 0
+          ? (ori.item.picture[0].imgWidth / ori.item.picture[0].imgHeight)
+          : 1,
     );
   }
 }

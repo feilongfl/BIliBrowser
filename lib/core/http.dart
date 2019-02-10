@@ -12,7 +12,7 @@ class BiliBiliApi {
     return s;
   }
 
-  static Get(String url) async {
+  static HttpGet(String url) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var uri = Uri.parse(url);
     var cookies = await prefs.get('cookies');
@@ -26,16 +26,35 @@ class BiliBiliApi {
     request.headers.add("Cookie", cookies);
     var response = await request.close();
     if (response.statusCode != HttpStatus.ok) {
-//    showDialog(
-//        context: context,
-//        builder: (_) =>
-//            AlertDialog(
-//              title: Text("Login Failed!"),
-//            ));
       print("get $url failed with httpcode: (${response.statusCode})");
       return null;
     }
     var result = await response.transform(utf8.decoder).join();
     return result;
+  }
+
+  static HttpGetAndSavePref(String url, String pref) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var httpResult = await HttpGet(url) ?? "";
+    prefs.setString(pref, httpResult);
+    return httpResult;
+  }
+
+  static HttpPrefGetAndSavePref(String url, String pref) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var p = prefs.getString(pref) ?? "";
+    if (p == "") {
+      return await HttpGetAndSavePref(url, pref);
+    }
+    return p;
+  }
+
+  static HttpPrefGetAuto(String url, String pref, bool force_refersh) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var p = prefs.getString(pref) ?? "";
+    if (p == "" || force_refersh) {
+      return await HttpGetAndSavePref(url, pref);
+    }
+    return p;
   }
 }

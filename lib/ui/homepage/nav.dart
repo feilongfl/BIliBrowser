@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/UserInfo_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/UserInfo_entity.dart';
 import 'package:bilibrowser/core/http.dart';
 import 'package:bilibrowser/ui/loginPage/loginpage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -12,43 +12,54 @@ class _drawerHeader extends StatefulWidget {
 }
 
 class _drawerHeaderState extends State<_drawerHeader> {
-  UserinfoEntity userinfo = null;
+  UserinfoEntity userinfo = UserinfoEntity();
   String cookies = null;
+  bool isShown = false;
+  static const defaultImg =
+      "https://i2.hdslb.com/bfs/face/e702b42023729a19d379b65c40fe3c6625a55d0b.gif";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getUserInfo();
+    isShown = true;
+    getUserInfo(false);
   }
 
-  void getUserInfo() async {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    isShown = false;
+    super.dispose();
+  }
+
+  Future<void> getUserInfoPref() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var userInfo = prefs.getString("userinfo");
-    if (userInfo != null) {
-      setState(() {
-        this.userinfo = UserinfoEntity.fromJson(json.decode(userInfo));
-      });
-
-      return;
-    }
-    getUserInfoFromInternet();
+    var name = await prefs.getString('userName');
+    var level = await prefs.getInt('userLevel');
+    var face = await prefs.getString('userFace');
+    var mid = await prefs.getInt("userMid");
+    setState(() {
+      userinfo.data = UserinfoData(
+          uname: name,
+          face: face,
+          mid: mid,
+          levelInfo: UserinfoLevelInfo(currentLevel: level));
+    });
   }
 
-  void getUserInfoFromInternet() async {
-    var jsonStr =
-    BiliBiliApi.Get("https://api.bilibili.com/x/web-interface/nav");
+  void getUserInfo(bool force) async {
+    await getUserInfoPref();
+    var jsonStr = await BiliBiliApi.HttpPrefGetAuto(
+        "https://api.bilibili.com/x/web-interface/nav", "userinfo", force);
     setState(() {
       this.userinfo = UserinfoEntity.fromJson(json.decode(jsonStr));
     });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("userinfo", jsonStr);
+    if (!force) getUserInfo(true);
   }
 
   @override
   build(BuildContext context) {
-    const defaultImg =
-        "https://i2.hdslb.com/bfs/face/e702b42023729a19d379b65c40fe3c6625a55d0b.gif";
     var notlogined = !(userinfo == null ? false : userinfo.code == 0);
     return UserAccountsDrawerHeader(
       accountName: notlogined ? Text("22") : Text(userinfo.data.uname ?? "22"),

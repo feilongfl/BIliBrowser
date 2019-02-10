@@ -1,17 +1,17 @@
-import 'package:bilibrowser/bilibiliApi/AnimeCNTimeline_entity.dart';
-import 'package:bilibrowser/bilibiliApi/AnimeGlobalTimeline_entity.dart';
-import 'package:bilibrowser/bilibiliApi/UserInfo_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin2_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type1_origin8_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type256_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type2_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type512_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type64_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_card_type8_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
-import 'package:bilibrowser/bilibiliApi/attention_extend_json_entity.dart';
-import 'package:bilibrowser/bilibiliApi/live_info_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeCNTimeline_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/AnimeGlobalTimeline_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/UserInfo_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin2_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin8_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type256_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type2_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type512_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type64_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type8_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
 
 class EntityFactory {
   static T generateOBJ<T>(json) {

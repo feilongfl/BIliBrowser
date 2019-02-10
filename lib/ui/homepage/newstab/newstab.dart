@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:bilibrowser/bilibiliApi/attention_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/core/http.dart';
 import 'package:bilibrowser/ui/homepage/newstab/news_card.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class newsTab extends StatelessWidget {
   @override
@@ -23,46 +22,32 @@ class liveList extends StatefulWidget {
 
 class liveListState extends State<liveList> {
   Attention attention;
-
-  void getAttentionInfoFromInternet() async {
-    var jsonStr = await BiliBiliApi.Get(
-        "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=1514605&type=268435455");
-    setState(() {
-      this.attention = Attention.fromJson(json.decode(jsonStr));
-    });
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("news", jsonStr);
-  }
-
-  getAttentionInfoFromPred() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String pref = prefs.getString("news") ?? "";
-    if (pref == "") {
-      getAttentionInfoFromInternet();
-      return;
-    }
-    setState(() {
-      this.attention = Attention.fromJson(json.decode(pref));
-    });
-  }
+  static const attentionUrl =
+      "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=1514605&type=268435455";
+  static const attentionPref = "news";
+  bool isShown = false;
 
   Future<void> getAttentionInfo(bool force) async {
-    if (force)
-      getAttentionInfoFromInternet();
-    else if (attention == null)
-      getAttentionInfoFromPred();
-    else if (attention.code != 0)
-      getAttentionInfoFromPred();
-    else {
-      getAttentionInfoFromPred();
-    }
+    var jsonStr =
+    await BiliBiliApi.HttpPrefGetAuto(attentionUrl, attentionPref, true);
+    if (isShown)
+      setState(() {
+        this.attention = Attention.fromJson(json.decode(jsonStr));
+      });
+    if (!force) getAttentionInfo(true);
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    isShown = true;
     getAttentionInfo(false);
+  }
+
+  @override
+  void dispose() {
+    isShown = false;
+    super.dispose();
   }
 
   @override
@@ -71,9 +56,12 @@ class liveListState extends State<liveList> {
     return !loaded
         ? Center(child: CircularProgressIndicator())
         : RefreshIndicator(
+      //todo: 下拉加载更多
       onRefresh: () => getAttentionInfo(true),
       child: Container(
-        color: Colors.black87,
+        color: Theme
+            .of(context)
+            .backgroundColor,
         padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
         child: !loaded
             ? Center(

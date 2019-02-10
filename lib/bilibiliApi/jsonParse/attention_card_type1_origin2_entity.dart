@@ -5,10 +5,12 @@ class AttentionCardType1Origin2 {
   AttentionCardType1Origin2({this.item, this.user});
 
   AttentionCardType1Origin2.fromJson(Map<String, dynamic> json) {
-    item = json['item'] != null ? new AttentionCardType1Origin2Item.fromJson(
-        json['item']) : null;
-    user = json['user'] != null ? new AttentionCardType1Origin2User.fromJson(
-        json['user']) : null;
+    item = json['item'] != null
+        ? new AttentionCardType1Origin2Item.fromJson(json['item'])
+        : null;
+    user = json['user'] != null
+        ? new AttentionCardType1Origin2User.fromJson(json['user'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -38,13 +40,24 @@ class AttentionCardType1Origin2Item {
   String category;
   int reply;
 
-  AttentionCardType1Origin2Item(
-      {this.setting, this.role, this.isFav, this.description, this.source, this.title, this.atControl, this.picture, this.picturesCount, this.uploadTime, this.id, this.category, this.reply});
+  AttentionCardType1Origin2Item({this.setting,
+    this.role,
+    this.isFav,
+    this.description,
+    this.source,
+    this.title,
+    this.atControl,
+    this.picture,
+    this.picturesCount,
+    this.uploadTime,
+    this.id,
+    this.category,
+    this.reply});
 
   AttentionCardType1Origin2Item.fromJson(Map<String, dynamic> json) {
-    setting =
-    json['settings'] != null ? new AttentionCardType1Origin2ItemSetting
-        .fromJson(json['settings']) : null;
+    setting = json['settings'] != null
+        ? new AttentionCardType1Origin2ItemSetting.fromJson(json['settings'])
+        : null;
 //		if (json['role'] != null) {
 //			role = new List<Null>();
 //			json['role'].forEach((v) { role.add(new Null.fromJson(v)); });
@@ -151,8 +164,9 @@ class AttentionCardType1Origin2User {
     uid = json['uid'];
     headUrl = json['head_url'];
     name = json['name'];
-    vip = json['vip'] != null ? new AttentionCardType1Origin2UserVip.fromJson(
-        json['vip']) : null;
+    vip = json['vip'] != null
+        ? new AttentionCardType1Origin2UserVip.fromJson(json['vip'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -175,8 +189,12 @@ class AttentionCardType1Origin2UserVip {
   String dueremark;
   String vipstatuswarn;
 
-  AttentionCardType1Origin2UserVip(
-      {this.vipduedate, this.viptype, this.accessstatu, this.vipstatu, this.dueremark, this.vipstatuswarn});
+  AttentionCardType1Origin2UserVip({this.vipduedate,
+    this.viptype,
+    this.accessstatu,
+    this.vipstatu,
+    this.dueremark,
+    this.vipstatuswarn});
 
   AttentionCardType1Origin2UserVip.fromJson(Map<String, dynamic> json) {
     vipduedate = json['vipDueDate'];
