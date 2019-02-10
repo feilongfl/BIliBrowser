@@ -12,7 +12,24 @@ class BiliBiliApi {
     return s;
   }
 
-  static HttpGet(String url) async {
+  static HttpGet(String url,String referer) async {
+    var uri = Uri.parse(url);
+
+    var httpClient = new HttpClient();
+    var request = await httpClient.openUrl("get", uri);
+    request.headers.add("referer", referer);
+    request.headers.add("User-Agent",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36");
+    var response = await request.close();
+    if (response.statusCode != HttpStatus.ok) {
+      print("get $url failed with httpcode: (${response.statusCode})");
+      return null;
+    }
+    var result = await response.transform(utf8.decoder).join();
+    return result;
+  }
+
+  static HttpGetWithCookies(String url) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var uri = Uri.parse(url);
     var cookies = await prefs.get('cookies');
@@ -35,7 +52,7 @@ class BiliBiliApi {
 
   static HttpGetAndSavePref(String url, String pref) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var httpResult = await HttpGet(url) ?? "";
+    var httpResult = await HttpGetWithCookies(url) ?? "";
     if (httpResult != "" && (pref != "" || pref != null))
       prefs.setString(pref, httpResult);
     return httpResult;

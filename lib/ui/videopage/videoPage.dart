@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bilibrowser/bilibiliApi/biliplus/biliplus_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/video_info_entity.dart';
 import 'package:bilibrowser/core/http.dart';
@@ -42,33 +43,57 @@ class VideoBodyState extends State<VideoBody> {
   final EposideInfoEplist eposide;
   final EposideInfo epinfo;
   VideoInfo info;
+  bool isShown = false;
 
   VideoBodyState(this.eposide, this.epinfo) : super();
 
-  Future<void> parseVideoInfo(int eid) async {
-    var h = await BiliBiliApi.HttpGet(
-        "https://www.bilibili.com/bangumi/play/ep$eid/");
-    var hjson_m = RegExp(r"__playinfo__=(.*?)<\/script>").firstMatch(h);
-    if (hjson_m != null) {
-      var hjson = hjson_m.group(1) ?? "";
-      info = VideoInfo.fromJson(json.decode(hjson));
-      if (info.code == 0) {
-        setState(() {
-          video_url = info.data.dash.video.map((v) {
-            print(v.baseUrl);
-            return v.baseUrl;
-          }).toList();
-        });
-      }
-    }
+//  Future<void> parseVideoInfo(int eid) async {
+//    var h = await BiliBiliApi.HttpGet(
+//        "https://www.bilibili.com/bangumi/play/ep$eid/");
+//    var hjson_m = RegExp(r"__playinfo__=(.*?)<\/script>").firstMatch(h);
+//    if (hjson_m != null) {
+//      var hjson = hjson_m.group(1) ?? "";
+//      info = VideoInfo.fromJson(json.decode(hjson));
+//      if (info.code == 0) {
+//        setState(() {
+//          video_url = info.data.dash.video.map((v) {
+//            print(v.baseUrl);
+//            return v.baseUrl;
+//          }).toList();
+//        });
+//      }
+//    }
+//  }
+
+  Future<void> parseVideoInfo(EposideInfoEplist eposid) async {
+    var jsonStr = await BiliBiliApi.HttpGet(
+        "https://www.biliplus.com/api/geturl?bangumi=1&av=${eposid.aid}&page=1",
+        "https://www.biliplus.com");
+    Biliplus bili = Biliplus.fromJson(json.decode(jsonStr));
+    if (isShown)
+      setState(() {
+        video_url = bili.data.where((v) {
+          return v.type == "single";
+        }).map((v) {
+          print(v.url ?? "empty video url");
+          return v.url ?? "";
+        }).toList();
+      });
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(json.encode(eposide.toJson()));
-    parseVideoInfo(eposide.id);
+//    print(json.encode(eposide.toJson()));
+    isShown = true;
+    parseVideoInfo(eposide);
+  }
+
+  @override
+  void dispose() {
+    isShown = false;
+    super.dispose();
   }
 
   @override
