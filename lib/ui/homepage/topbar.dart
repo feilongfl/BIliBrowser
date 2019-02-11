@@ -78,14 +78,14 @@ class _TopBarState extends State<TopBar> {
         appBar: AppBar(
           title: Text("BiliBrowser"),
           actions: <Widget>[
-//            IconButton(
-//              icon: Icon(Icons.search),
-//              onPressed: () {},
-//            ),
-//            IconButton(
-//              icon: Icon(Icons.chat_bubble_outline),
-//              onPressed: () {},
-//            ),
+            IconButton(
+              icon: Icon(Icons.camera_alt),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {},
+            ),
           ],
           bottom: TabBar(
             tabs: tabs.map((tab) => tab.tab).toList(),
