@@ -77,14 +77,14 @@ class _TopBarState extends State<TopBar> {
         appBar: AppBar(
           title: Text("BiliBrowser"),
           actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            ),
-            IconButton(
-              icon: Icon(Icons.chat_bubble_outline),
-              onPressed: () {},
-            ),
+//            IconButton(
+//              icon: Icon(Icons.search),
+//              onPressed: () {},
+//            ),
+//            IconButton(
+//              icon: Icon(Icons.chat_bubble_outline),
+//              onPressed: () {},
+//            ),
           ],
           bottom: TabBar(
             tabs: tabs.map((tab) => tab.tab).toList(),
@@ -97,8 +97,13 @@ class _TopBarState extends State<TopBar> {
                 .backgroundColor,
             child:
             TabBarView(children: tabs.map((tab) => tab.widget).toList())),
-        drawer: Drawer(
-          child: navDrawer,
+        drawer: Container(
+//          color: Theme.of(context).backgroundColor,
+          child: Drawer(
+            child: Container(
+                color: Theme.of(context).backgroundColor,
+                child: navDrawer()),
+          ),
         ),
       ),
     );

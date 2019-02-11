@@ -83,37 +83,39 @@ class _drawerHeaderState extends State<_drawerHeader> {
   }
 }
 
-final navDrawer = ListView(
-  children: <Widget>[
-    _drawerHeader(),
-//    ListTile(
-//      leading: Icon(Icons.bubble_chart),
-//      title: Text('Plugin'),
-//    ),
-    ListTile(
-      leading: Icon(Icons.history),
-      title: Text('History'),
-    ),
-    ListTile(
-      leading: Icon(Icons.favorite),
-      title: Text('Favorite'),
-    ),
-    ListTile(
-      leading: Icon(Icons.play_circle_filled),
-      title: Text('Watch Later'),
-    ),
-    ListTile(
-      leading: Icon(Icons.arrow_downward),
-      title: Text('Download'),
-    ),
-    Divider(),
-    ListTile(
-      leading: Icon(Icons.settings),
-      title: Text('Setting'),
-    ),
-    ListTile(
-      leading: Icon(Icons.account_box),
-      title: Text('About'),
-    ),
-  ],
-);
+class navDrawer extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return  ListView(
+      children: <Widget>[
+        _drawerHeader(),
+        ListTile(
+          leading: Icon(Icons.history,color: Theme.of(context).iconTheme.color,),
+          title: Text('History'),
+        ),
+        ListTile(
+          leading: Icon(Icons.favorite,color: Theme.of(context).iconTheme.color,),
+          title: Text('Favorite'),
+        ),
+        ListTile(
+          leading: Icon(Icons.play_circle_filled,color: Theme.of(context).iconTheme.color,),
+          title: Text('Watch Later'),
+        ),
+        ListTile(
+          leading: Icon(Icons.arrow_downward,color: Theme.of(context).iconTheme.color,),
+          title: Text('Download'),
+        ),
+        Divider(color: Theme.of(context).dividerColor,),
+        ListTile(
+          leading: Icon(Icons.settings,color: Theme.of(context).iconTheme.color,),
+          title: Text('Setting'),
+        ),
+        ListTile(
+          leading: Icon(Icons.account_box,color: Theme.of(context).iconTheme.color,),
+          title: Text('About'),
+        ),
+      ],
+    );
+  }
+}

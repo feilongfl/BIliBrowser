@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
           body2: TextStyle(fontSize: 16.0, color: Colors.white),
           subtitle: TextStyle(fontSize: 14.0, color: Colors.white),
         ),
+        dividerColor: Colors.white70,
         iconTheme: IconThemeData(
-          color: Colors.white,
+          color: Colors.white70,
         ),
       ),
       home: TopBar(),

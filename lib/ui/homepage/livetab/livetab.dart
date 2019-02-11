@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
 import 'package:bilibrowser/core/http.dart';
-import 'package:bilibrowser/core/launchUri.dart';
+import 'package:bilibrowser/ui/videopage/livepage.dart';
 import 'package:bilibrowser/ui/widget/video_card.dart';
 import 'package:flutter/material.dart';
 
@@ -83,6 +83,7 @@ class liveVideoInfoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//    print(json.encode(info.toJson()));
     // TODO: implement build
     return VideoCard(
       title: info.title,
@@ -90,7 +91,8 @@ class liveVideoInfoItem extends StatelessWidget {
       userface: info.face,
       cover: info.pic,
       onTap: () {
-        launchURL(this.info.link);
+//        launchURL(this.info.link);
+        Navigator.of(context).push(livePage(info));
       },
     );
   }

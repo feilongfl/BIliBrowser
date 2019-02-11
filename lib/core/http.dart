@@ -12,12 +12,12 @@ class BiliBiliApi {
     return s;
   }
 
-  static HttpGet(String url,String referer) async {
+  static HttpGet(String url, String referer) async {
     var uri = Uri.parse(url);
 
     var httpClient = new HttpClient();
     var request = await httpClient.openUrl("get", uri);
-    request.headers.add("referer", referer);
+    if (referer != "") request.headers.add("referer", referer);
     request.headers.add("User-Agent",
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36");
     var response = await request.close();

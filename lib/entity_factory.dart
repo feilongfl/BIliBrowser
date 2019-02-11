@@ -14,6 +14,7 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/eposide_info_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/live_video_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/UserInfo_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/video_info_entity.dart';
 
@@ -53,6 +54,8 @@ class EntityFactory {
       return EposideInfo.fromJson(json) as T;
     } else if (T.toString() == "LiveInfoEntity") {
       return LiveInfoEntity.fromJson(json) as T;
+    } else if (T.toString() == "LiveVideo") {
+      return LiveVideo.fromJson(json) as T;
     } else if (T.toString() == "UserinfoEntity") {
       return UserinfoEntity.fromJson(json) as T;
     } else if (T.toString() == "VideoInfo") {
