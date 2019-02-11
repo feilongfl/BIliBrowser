@@ -77,6 +77,7 @@ class liveListState extends State<liveList> {
 //                  padding: EdgeInsets.all(16),
 //                  padding: EdgeInsets.only(top: 5, bottom: 5),
                       itemBuilder: (BuildContext context, int index) {
+                        Widget w;
                         return Center(
                             child: attentionVideoInfoItem(
                                 card: this.attention.data.cards[index]));
