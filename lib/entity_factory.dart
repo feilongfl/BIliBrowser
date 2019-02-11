@@ -5,6 +5,7 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/UserInfo_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin2_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin4101_entity.dart';
+import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin64_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type1_origin8_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type256_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type2_entity.dart';
@@ -36,6 +37,8 @@ class EntityFactory {
       return AttentionCardType1Origin2.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType1Origin4101Entity") {
       return AttentionCardType1Origin4101Entity.fromJson(json) as T;
+    } else if (T.toString() == "AttentionCardType1Origin64Entity") {
+      return AttentionCardType1Origin64Entity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType1Origin8") {
       return AttentionCardType1Origin8.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType256") {
