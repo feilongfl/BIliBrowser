@@ -23,7 +23,7 @@ class liveList extends StatefulWidget {
 class liveListState extends State<liveList> {
   Attention attention;
   static const attentionUrl =
-      "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=1514605&type=268435455";
+      "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=268435455";
   static const attentionPref = "news";
   bool isShown = false;
 
