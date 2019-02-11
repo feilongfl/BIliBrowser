@@ -3,9 +3,17 @@ import 'package:bilibrowser/bilibiliApi/jsonParse/channel_video_data_entity.dart
 class ChannelItem {
   List<ChannelVideoDataEntity> list;
   String name;
+  String alias;
   String imgsrc;
 
-  ChannelItem({this.name, this.list, this.imgsrc});
+  ChannelItem({this.name, this.list, this.imgsrc, this.alias});
+}
+
+class NameWithAlias {
+  final String name;
+  final String alias;
+
+  const NameWithAlias({this.name, this.alias});
 }
 
 class ChannelVideoEntity {
@@ -15,22 +23,67 @@ class ChannelVideoEntity {
   String list;
   List<ChannelItem> items;
 
-  static const itemnames = [
-    'douga',
-    'teleplay',
-    'kichiku',
-    'dance',
-    'bangumi',
-    'fashion',
-    'life',
-    'ad',
-    'guochuang',
-    'tttt',
-    'movie',
-    'music',
-    'technology',
-    'game',
-    'ent'
+  static const List<NameWithAlias> itemnames = [
+    const NameWithAlias(
+      name: 'douga',
+      alias: 'douga',
+    ),
+    const NameWithAlias(
+      name: 'teleplay',
+      alias: 'teleplay',
+    ),
+    const NameWithAlias(
+      name: 'kichiku',
+      alias: 'kichiku',
+    ),
+    const NameWithAlias(
+      name: 'dance',
+      alias: 'dance',
+    ),
+    const NameWithAlias(
+      name: 'bangumi',
+      alias: 'bangumi',
+    ),
+    const NameWithAlias(
+      name: 'fashion',
+      alias: 'fashion',
+    ),
+    const NameWithAlias(
+      name: 'life',
+      alias: 'life',
+    ),
+    const NameWithAlias(
+      name: 'ad',
+      alias: 'ad',
+    ),
+    const NameWithAlias(
+      name: 'guochuang',
+      alias: 'guochuang',
+    ),
+    const NameWithAlias(
+      name: 'digital',
+      alias: 'digital',
+    ),
+    const NameWithAlias(
+      name: 'movie',
+      alias: 'movie',
+    ),
+    const NameWithAlias(
+      name: 'music',
+      alias: 'music',
+    ),
+    const NameWithAlias(
+      name: 'technology',
+      alias: 'technology',
+    ),
+    const NameWithAlias(
+      name: 'game',
+      alias: 'game',
+    ),
+    const NameWithAlias(
+      name: 'ent',
+      alias: 'ent',
+    )
   ];
 
   ChannelVideoEntity({this.code, this.pages, this.results, this.list});
@@ -51,13 +104,14 @@ class ChannelVideoEntity {
     ////
     items = new List();
     for (var itemname in itemnames) {
-      if (json[itemname] != null) {
+      if (json[itemname.name] != null) {
         var itemlist = new List<ChannelVideoDataEntity>();
-        for (var i = 0; i < json[itemname].length; i++)
+        for (var i = 0; i < json[itemname.name].length; i++)
           itemlist.add(new ChannelVideoDataEntity.fromJson(
-              json[itemname][i.toString()]));
+              json[itemname.name][i.toString()]));
         items.add(ChannelItem(
-          name: itemname,
+          name: itemname.name,
+          alias: itemname.alias,
           list: itemlist,
 //          imgsrc: "",
         ));

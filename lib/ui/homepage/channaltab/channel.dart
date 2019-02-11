@@ -18,7 +18,7 @@ class ChannelTabState extends State<ChannelTab> {
   Future<void> _getChannelList(bool force) async {
     var jsonStr =
         await BiliBiliApi.HttpPrefGetAuto(channelUrl, channelPref, force);
-    if (isShown) jsonStr = jsonStr.replaceFirst(r'"":', r'"tttt":');
+    if (isShown) jsonStr = jsonStr.replaceFirst(r'"":', r'"digital":');
     setState(() {
       channelData = ChannelVideoEntity.fromJson(json.decode(jsonStr));
     });
@@ -40,7 +40,7 @@ class ChannelTabState extends State<ChannelTab> {
 
   @override
   Widget build(BuildContext context) {
-    _getChannelList(true);
+//    _getChannelList(true);
     return RefreshIndicator(
       onRefresh: () => _getChannelList(true),
       child: Container(
@@ -57,14 +57,18 @@ class ChannelTabState extends State<ChannelTab> {
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {
             if (channelData != null) {
-              return Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(Icons.face),
-                  Text(channelData.items[index].name),
-                ],
-              ));
+              return Container(
+                color: Colors.red.withOpacity(0.5),
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.face),
+                        Padding(padding: EdgeInsets.only(top: 8),),
+                        Text(channelData.items[index].alias),
+                      ],
+                    )),
+              );
             } else
               return new Center(child: CircularProgressIndicator());
           },
