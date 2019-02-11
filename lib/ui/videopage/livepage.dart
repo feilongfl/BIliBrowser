@@ -171,17 +171,19 @@ class LiveBodyState extends State<LiveBody> {
                   ),
                   Container(
                     height: 300,
-                    child: Center(child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("pinglun..."),
-                        Text("pinglun..."),
-                        Text("pinglun..."),
-                        Text("pinglun..."),
-                        Text("pinglun..."),
-                        Text("pinglun..."),
-                      ],
-                    ),),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("pinglun..."),
+                          Text("pinglun..."),
+                          Text("pinglun..."),
+                          Text("pinglun..."),
+                          Text("pinglun..."),
+                          Text("pinglun..."),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),

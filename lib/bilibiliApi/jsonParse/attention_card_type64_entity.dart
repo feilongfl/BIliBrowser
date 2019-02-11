@@ -23,14 +23,36 @@ class AttentionCardType64Entity {
   AttentionCardType64Category category;
   String checkTime;
 
-  AttentionCardType64Entity(
-      {this.summary, this.reprint, this.author, this.words, this.originImageUrls, this.imageUrls, this.applyTime, this.media, this.title, this.xList, this.tags, this.stats, this.isLike, this.publishTime, this.ctime, this.bannerUrl, this.templateId, this.xDynamic, this.id, this.categories, this.state, this.category, this.checkTime});
+  AttentionCardType64Entity({this.summary,
+    this.reprint,
+    this.author,
+    this.words,
+    this.originImageUrls,
+    this.imageUrls,
+    this.applyTime,
+    this.media,
+    this.title,
+    this.xList,
+    this.tags,
+    this.stats,
+    this.isLike,
+    this.publishTime,
+    this.ctime,
+    this.bannerUrl,
+    this.templateId,
+    this.xDynamic,
+    this.id,
+    this.categories,
+    this.state,
+    this.category,
+    this.checkTime});
 
   AttentionCardType64Entity.fromJson(Map<String, dynamic> json) {
     summary = json['summary'];
     reprint = json['reprint'];
-    author = json['author'] != null ? new AttentionCardType64Author.fromJson(
-        json['author']) : null;
+    author = json['author'] != null
+        ? new AttentionCardType64Author.fromJson(json['author'])
+        : null;
     words = json['words'];
     originImageUrls = json['origin_image_urls'].cast<String>();
     imageUrls = json['image_urls'].cast<String>();
@@ -65,9 +87,9 @@ class AttentionCardType64Entity {
       });
     }
     state = json['state'];
-    category =
-    json['category'] != null ? new AttentionCardType64Category.fromJson(
-        json['category']) : null;
+    category = json['category'] != null
+        ? new AttentionCardType64Category.fromJson(json['category'])
+        : null;
     checkTime = json['check_time'];
   }
 
@@ -123,19 +145,24 @@ class AttentionCardType64Author {
   AttentionCardType64AuthorVip vip;
   AttentionCardType64AuthorOfficialVerify officialVerify;
 
-  AttentionCardType64Author(
-      {this.face, this.name, this.mid, this.pendant, this.nameplate, this.vip, this.officialVerify});
+  AttentionCardType64Author({this.face,
+    this.name,
+    this.mid,
+    this.pendant,
+    this.nameplate,
+    this.vip,
+    this.officialVerify});
 
   AttentionCardType64Author.fromJson(Map<String, dynamic> json) {
     face = json['face'];
     name = json['name'];
     mid = json['mid'];
-    pendant =
-    json['pendant'] != null ? new AttentionCardType64AuthorPendant.fromJson(
-        json['pendant']) : null;
-    nameplate =
-    json['nameplate'] != null ? new AttentionCardType64AuthorNameplate.fromJson(
-        json['nameplate']) : null;
+    pendant = json['pendant'] != null
+        ? new AttentionCardType64AuthorPendant.fromJson(json['pendant'])
+        : null;
+    nameplate = json['nameplate'] != null
+        ? new AttentionCardType64AuthorNameplate.fromJson(json['nameplate'])
+        : null;
     vip = json['vip'] != null
         ? new AttentionCardType64AuthorVip.fromJson(json['vip'])
         : null;
@@ -200,8 +227,12 @@ class AttentionCardType64AuthorNameplate {
   int nid;
   String name;
 
-  AttentionCardType64AuthorNameplate(
-      {this.image, this.imageSmall, this.condition, this.level, this.nid, this.name});
+  AttentionCardType64AuthorNameplate({this.image,
+    this.imageSmall,
+    this.condition,
+    this.level,
+    this.nid,
+    this.name});
 
   AttentionCardType64AuthorNameplate.fromJson(Map<String, dynamic> json) {
     image = json['image'];
@@ -279,8 +310,14 @@ class AttentionCardType64Media {
   int spoiler;
   String title;
 
-  AttentionCardType64Media(
-      {this.cover, this.area, this.score, this.typeName, this.typeId, this.mediaId, this.spoiler, this.title});
+  AttentionCardType64Media({this.cover,
+    this.area,
+    this.score,
+    this.typeName,
+    this.typeId,
+    this.mediaId,
+    this.spoiler,
+    this.title});
 
   AttentionCardType64Media.fromJson(Map<String, dynamic> json) {
     cover = json['cover'];
@@ -320,8 +357,17 @@ class AttentionCardType64List {
   int ctime;
   int id;
 
-  AttentionCardType64List(
-      {this.summary, this.updateTime, this.read, this.imageUrl, this.publishTime, this.articlesCount, this.name, this.words, this.mid, this.ctime, this.id});
+  AttentionCardType64List({this.summary,
+    this.updateTime,
+    this.read,
+    this.imageUrl,
+    this.publishTime,
+    this.articlesCount,
+    this.name,
+    this.words,
+    this.mid,
+    this.ctime,
+    this.id});
 
   AttentionCardType64List.fromJson(Map<String, dynamic> json) {
     summary = json['summary'];
@@ -383,8 +429,14 @@ class AttentionCardType64Stats {
   int favorite;
   int coin;
 
-  AttentionCardType64Stats(
-      {this.view, this.like, this.dislike, this.share, this.xDynamic, this.reply, this.favorite, this.coin});
+  AttentionCardType64Stats({this.view,
+    this.like,
+    this.dislike,
+    this.share,
+    this.xDynamic,
+    this.reply,
+    this.favorite,
+    this.coin});
 
   AttentionCardType64Stats.fromJson(Map<String, dynamic> json) {
     view = json['view'];

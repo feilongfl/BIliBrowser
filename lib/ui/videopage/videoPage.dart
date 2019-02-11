@@ -175,7 +175,8 @@ class VideoBodyState extends State<VideoBody> {
                                 padding: EdgeInsets.only(top: 10),
                               ),
                               Text(
-                                eposide.titleformat + ":" +
+                                eposide.titleformat +
+                                    ":" +
                                     epinfo.mediainfo.evaluate,
                                 style: Theme
                                     .of(context)

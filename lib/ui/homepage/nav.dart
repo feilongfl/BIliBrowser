@@ -83,36 +83,76 @@ class _drawerHeaderState extends State<_drawerHeader> {
   }
 }
 
-class navDrawer extends StatelessWidget{
+class navDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  ListView(
+    return ListView(
       children: <Widget>[
         _drawerHeader(),
         ListTile(
-          leading: Icon(Icons.history,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.history,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('History'),
         ),
         ListTile(
-          leading: Icon(Icons.favorite,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.favorite,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('Favorite'),
         ),
         ListTile(
-          leading: Icon(Icons.play_circle_filled,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.play_circle_filled,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('Watch Later'),
         ),
         ListTile(
-          leading: Icon(Icons.arrow_downward,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.arrow_downward,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('Download'),
         ),
-        Divider(color: Theme.of(context).dividerColor,),
+        Divider(
+          color: Theme
+              .of(context)
+              .dividerColor,
+        ),
         ListTile(
-          leading: Icon(Icons.settings,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.settings,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('Setting'),
         ),
         ListTile(
-          leading: Icon(Icons.account_box,color: Theme.of(context).iconTheme.color,),
+          leading: Icon(
+            Icons.account_box,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+          ),
           title: Text('About'),
         ),
       ],

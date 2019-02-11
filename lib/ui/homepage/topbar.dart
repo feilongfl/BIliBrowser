@@ -102,8 +102,9 @@ class _TopBarState extends State<TopBar> {
 //          color: Theme.of(context).backgroundColor,
           child: Drawer(
             child: Container(
-                color: Theme.of(context).backgroundColor,
-                child: navDrawer()),
+                color: Theme
+                    .of(context)
+                    .backgroundColor, child: navDrawer()),
           ),
         ),
       ),
