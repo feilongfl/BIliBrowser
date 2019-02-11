@@ -1,4 +1,5 @@
 import 'package:bilibrowser/ui/homepage/animetab/anime.dart';
+import 'package:bilibrowser/ui/homepage/channaltab/channel.dart';
 import 'package:bilibrowser/ui/homepage/livetab/livetab.dart';
 import 'package:bilibrowser/ui/homepage/nav.dart';
 import 'package:bilibrowser/ui/homepage/newstab/newstab.dart';
@@ -50,7 +51,7 @@ class _TopBarState extends State<TopBar> {
         Tab(
           text: "Channel",
         ),
-        null),
+        ChannelTab()),
     TopBarWidget(
         Tab(
           text: "Music",
