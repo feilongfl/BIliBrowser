@@ -8,12 +8,13 @@ import 'package:flutter/material.dart';
 
 class attentionVideoInfoItemType64 extends StatelessWidget {
   final AttentionDataCard attentionDataCard;
-  AttentionCardType64 card;
+  AttentionCardType64Entity card;
   AttentionExtendJson ext;
 
   attentionVideoInfoItemType64({Key key, this.attentionDataCard})
       : super(key: key) {
-    card = AttentionCardType64.fromJson(json.decode(attentionDataCard.card));
+    card =
+        AttentionCardType64Entity.fromJson(json.decode(attentionDataCard.card));
     ext =
         AttentionExtendJson.fromJson(json.decode(attentionDataCard.extendJson));
   }
@@ -23,7 +24,7 @@ class attentionVideoInfoItemType64 extends StatelessWidget {
     // TODO: implement build
     return VideoCard(
       title: card.title,
-      cover: card.imageUrl[0] ?? "",
+      cover: card.imageUrls[0] ?? "",
       userface: card.author.face,
       username: card.author.name,
     );

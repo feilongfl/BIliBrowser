@@ -21,7 +21,7 @@ class liveList extends StatefulWidget {
 }
 
 class liveListState extends State<liveList> {
-  Attention attention;
+  AttentionEntity attention;
   static const attentionUrl =
       "https://api.vc.bilibili.com/dynamic_svr/v1/dynamic_svr/dynamic_new?uid=0&type=268435455";
   static const attentionPref = "news";
@@ -32,7 +32,7 @@ class liveListState extends State<liveList> {
         await BiliBiliApi.HttpPrefGetAuto(attentionUrl, attentionPref, true);
     if (isShown)
       setState(() {
-        this.attention = Attention.fromJson(json.decode(jsonStr));
+        this.attention = AttentionEntity.fromJson(json.decode(jsonStr));
       });
     if (!force) getAttentionInfo(true);
   }
@@ -52,7 +52,11 @@ class liveListState extends State<liveList> {
 
   @override
   Widget build(BuildContext context) {
-    var loaded = this.attention == null ? false : (this.attention.code == 0);
+    var loaded = this.attention == null
+        ? false
+        : (this.attention.code != 0
+        ? false
+        : (this.attention.data.cards.length != 0));
     return !loaded
         ? Center(child: CircularProgressIndicator())
         : RefreshIndicator(
@@ -69,13 +73,13 @@ class liveListState extends State<liveList> {
                       separatorBuilder: (context, index) => Divider(
                             color: Colors.white,
                           ),
-                      itemCount: this.attention.data.card.length,
+                  itemCount: this.attention.data.cards.length,
 //                  padding: EdgeInsets.all(16),
 //                  padding: EdgeInsets.only(top: 5, bottom: 5),
                       itemBuilder: (BuildContext context, int index) {
                         return Center(
                             child: attentionVideoInfoItem(
-                                card: this.attention.data.card[index]));
+                                card: this.attention.data.cards[index]));
                       }),
             ),
           );

@@ -9,7 +9,7 @@ import 'package:bilibrowser/ui/homepage/newstab/news_card8.dart';
 import 'package:flutter/material.dart';
 
 class attentionVideoInfoItem extends StatelessWidget {
-  AttentionDataCard card;
+  final AttentionDataCard card;
 
   attentionVideoInfoItem({Key key, this.card}) : super(key: key);
 

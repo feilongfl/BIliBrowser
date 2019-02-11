@@ -43,12 +43,12 @@ class EntityFactory {
       return AttentionCardType4.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType512") {
       return AttentionCardType512.fromJson(json) as T;
-    } else if (T.toString() == "AttentionCardType64") {
-      return AttentionCardType64.fromJson(json) as T;
+    } else if (T.toString() == "AttentionCardType64Entity") {
+      return AttentionCardType64Entity.fromJson(json) as T;
     } else if (T.toString() == "AttentionCardType8") {
       return AttentionCardType8.fromJson(json) as T;
-    } else if (T.toString() == "Attention") {
-      return Attention.fromJson(json) as T;
+    } else if (T.toString() == "AttentionEntity") {
+      return AttentionEntity.fromJson(json) as T;
     } else if (T.toString() == "AttentionExtendJson") {
       return AttentionExtendJson.fromJson(json) as T;
     } else if (T.toString() == "ChannelVideoDataEntity") {
