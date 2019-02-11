@@ -19,10 +19,11 @@ class ChannelTabState extends State<ChannelTab> {
   Future<void> _getChannelList(bool force) async {
     var jsonStr =
         await BiliBiliApi.HttpPrefGetAuto(channelUrl, channelPref, force);
-    if (isShown) jsonStr = jsonStr.replaceFirst(r'"":', r'"digital":');
-    setState(() {
-      channelData = ChannelVideoEntity.fromJson(json.decode(jsonStr));
-    });
+    jsonStr = jsonStr.replaceFirst(r'"":', r'"digital":');
+    if (isShown)
+      setState(() {
+        channelData = ChannelVideoEntity.fromJson(json.decode(jsonStr));
+      });
     if (!force) _getChannelList(true);
   }
 
