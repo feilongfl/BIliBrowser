@@ -11,8 +11,8 @@ class eposideDesc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return SingleChildScrollView(
-      child: Column(
+    return Container(
+      child: ListView(
         children: <Widget>[
           Container(
             padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -50,6 +50,7 @@ class eposideDesc extends StatelessWidget {
               }).toList(),
             ),
           ),
+//          Container(height: 300,color: Colors.red.withOpacity(0.6),)
         ],
       ),
     );
