@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:screen/screen.dart';
 import 'package:video_player/video_player.dart';
 
 class BiliPlayer extends StatefulWidget {
@@ -26,6 +27,7 @@ class _BiliPlayerState extends State<BiliPlayer> {
   @override
   void initState() {
     super.initState();
+    Screen.keepOn(true);
     _controller = VideoPlayerController.network(video_url)
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
@@ -124,37 +126,11 @@ class _BiliPlayerState extends State<BiliPlayer> {
         ]);
   }
 
-//  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      backgroundColor: Colors.black87,
-//      body: Center(
-//        child: _controller.value.initialized
-//            ? AspectRatio(
-//          aspectRatio: _controller.value.aspectRatio,
-//          child: VideoPlayer(_controller),
-//        )
-//            : Container(),
-//      ),
-//      floatingActionButton: FloatingActionButton(
-//        onPressed: () {
-//          setState(() {
-//            _controller.value.isPlaying
-//                ? _controller.pause()
-//                : _controller.play();
-//          });
-//        },
-//        child: Icon(
-//          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-//        ),
-//      ),
-//    );
-//  }
-
   @override
   void dispose() {
     _controller.dispose();
     chewieController.dispose();
+    Screen.keepOn(false);
     super.dispose();
   }
 }
