@@ -19,7 +19,7 @@ class TopBarWidget {
     text: "tab",
   );
   Widget widget = Container(
-    color: Colors.black87,
+//    color: Colors.black87,
     child: Center(
       child: Icon(
         Icons.texture,
@@ -91,7 +91,12 @@ class _TopBarState extends State<TopBar> {
             isScrollable: true,
           ),
         ),
-        body: TabBarView(children: tabs.map((tab) => tab.widget).toList()),
+        body: Container(
+            color: Theme
+                .of(context)
+                .backgroundColor,
+            child:
+            TabBarView(children: tabs.map((tab) => tab.widget).toList())),
         drawer: Drawer(
           child: navDrawer,
         ),

@@ -20,7 +20,7 @@ class BlurImageBackground extends StatelessWidget {
           height: double.infinity,
           child: CachedNetworkImage(
             fit: BoxFit.fill,
-            placeholder: Center(child: CircularProgressIndicator()),
+//            placeholder: Center(child: CircularProgressIndicator()),
             imageUrl: this.imageUri,
           ),
         ),

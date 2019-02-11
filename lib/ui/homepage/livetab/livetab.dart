@@ -58,7 +58,7 @@ class liveListState extends State<liveList> {
         : RefreshIndicator(
             onRefresh: () => getLiveInfo(true),
             child: Container(
-              color: Theme.of(context).backgroundColor,
+//              color: Theme.of(context).backgroundColor,
               padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
               child: ListView.separated(
                   separatorBuilder: (context, index) => Divider(

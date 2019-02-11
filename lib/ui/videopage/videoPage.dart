@@ -16,7 +16,7 @@ class videoPage extends MaterialPageRoute<Null> {
   videoPage(this.eposide, this.epinfo)
       : super(builder: (BuildContext context) {
           return Scaffold(
-            backgroundColor: Colors.black87,
+//            backgroundColor: Colors.black87,
             appBar: AppBar(
               title: Text(eposide.titleformat),
             ),
@@ -110,11 +110,18 @@ class VideoBodyState extends State<VideoBody> {
         Column(
           children: <Widget>[
             Container(
-                height: 233,
+                height: 250,
                 color: Colors.black87,
                 child: video_url.length == 0
-                    ? Center(
-                        child: CircularProgressIndicator(),
+                    ? Stack(
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    CachedNetworkImage(
+                      imageUrl: "https:" + eposide.cover,
+                      fit: BoxFit.fill,
+                    ),
+                    Center(child: CircularProgressIndicator()),
+                  ],
                       )
                     : BiliPlayer(
                         video_url: video_url[0],
@@ -122,63 +129,82 @@ class VideoBodyState extends State<VideoBody> {
             Padding(
               padding: EdgeInsets.only(top: 30),
             ),
-            Container(
-              color: Colors.black.withOpacity(0.3),
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+            SingleChildScrollView(
+              child: Column(
                 children: <Widget>[
                   Container(
-                    height: 200,
-                    width: 150,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      child: Stack(
-                        alignment: AlignmentDirectional.topStart,
-                        children: <Widget>[
-                          CachedNetworkImage(
-                            placeholder:
-                                Center(child: CircularProgressIndicator()),
-                            imageUrl: "https:" + epinfo.mediainfo.cover,
-                          ),
-                          Opacity(
-                            opacity: 0.3,
-                            child: Container(
-                              height: 24,
-                              color: Colors.black,
+                    color: Colors.black.withOpacity(0.3),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          height: 200,
+                          width: 150,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            child: Stack(
+                              alignment: AlignmentDirectional.topStart,
+                              children: <Widget>[
+                                CachedNetworkImage(
+                                  placeholder:
+                                  Center(child: CircularProgressIndicator()),
+                                  imageUrl: "https:" + epinfo.mediainfo.cover,
+                                ),
+                                Opacity(
+                                  opacity: 0.3,
+                                  child: Container(
+                                    height: 24,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Text(
+                                  epinfo.epinfo.title,
+                                  style: Theme
+                                      .of(context)
+                                      .textTheme
+                                      .subtitle,
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: false,
+                                ),
+                              ],
                             ),
                           ),
-                          Text(
-                            epinfo.epinfo.title,
-                            style: Theme.of(context).textTheme.subtitle,
-                            overflow: TextOverflow.ellipsis,
-                            softWrap: false,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 8),
-                  ),
-                  Flexible(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        Text(
-                          epinfo.mediainfo.title,
-                          style: Theme.of(context).textTheme.title,
-                        ),
-                        Text(
-                          eposide.titleformat + ":" + eposide.longtitle,
-                          style: Theme.of(context).textTheme.subtitle,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(left: 8),
                         ),
-                        Text(
-                          eposide.titleformat + ":" + epinfo.mediainfo.evaluate,
-                          style: Theme.of(context).textTheme.body1,
+                        Flexible(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                epinfo.mediainfo.title,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .title,
+                              ),
+                              Text(
+                                eposide.titleformat + ":" + eposide.longtitle,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .subtitle,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 10),
+                              ),
+                              Text(
+                                eposide.titleformat + ":" +
+                                    epinfo.mediainfo.evaluate,
+                                style: Theme
+                                    .of(context)
+                                    .textTheme
+                                    .body1,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

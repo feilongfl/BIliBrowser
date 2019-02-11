@@ -82,7 +82,7 @@ class eposideBodyState extends State<eposideBody> {
             episodeHead(
               anime: anime,
             ),
-            info(context),
+            SingleChildScrollView(child: info(context)),
           ],
         ),
       ],

@@ -30,7 +30,7 @@ class eposideDesc extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               controller: ScrollController(
-                initialScrollOffset: (235 * epInfo.epinfo.i).toDouble(),
+                initialScrollOffset: (240 * epInfo.epinfo.i).toDouble(),
               ),
               children: epInfo.eplist.map((ep) {
                 return Padding(

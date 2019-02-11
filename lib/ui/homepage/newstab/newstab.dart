@@ -59,7 +59,7 @@ class liveListState extends State<liveList> {
             //todo: 下拉加载更多
             onRefresh: () => getAttentionInfo(true),
             child: Container(
-              color: Theme.of(context).backgroundColor,
+//              color: Theme.of(context).backgroundColor,
               padding: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
               child: !loaded
                   ? Center(
