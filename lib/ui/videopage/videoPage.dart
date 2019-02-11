@@ -129,8 +129,8 @@ class VideoBodyState extends State<VideoBody> {
             Padding(
               padding: EdgeInsets.only(top: 30),
             ),
-            SingleChildScrollView(
-              child: Column(
+            Expanded(
+              child: ListView(
                 children: <Widget>[
                   Container(
                     color: Colors.black.withOpacity(0.3),
@@ -142,31 +142,10 @@ class VideoBodyState extends State<VideoBody> {
                           width: 150,
                           child: ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            child: Stack(
-                              alignment: AlignmentDirectional.topStart,
-                              children: <Widget>[
-                                CachedNetworkImage(
-                                  placeholder:
-                                  Center(child: CircularProgressIndicator()),
-                                  imageUrl: "https:" + epinfo.mediainfo.cover,
-                                ),
-                                Opacity(
-                                  opacity: 0.3,
-                                  child: Container(
-                                    height: 24,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Text(
-                                  epinfo.epinfo.title,
-                                  style: Theme
-                                      .of(context)
-                                      .textTheme
-                                      .subtitle,
-                                  overflow: TextOverflow.ellipsis,
-                                  softWrap: false,
-                                ),
-                              ],
+                            child: CachedNetworkImage(
+                              placeholder:
+                              Center(child: CircularProgressIndicator()),
+                              imageUrl: "https:" + epinfo.mediainfo.cover,
                             ),
                           ),
                         ),
