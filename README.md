@@ -5,6 +5,11 @@ A bilibili browser.
 > This is a only app for learn flutter and dart.
 > Special thanks for biliplus provide video parse api.
 
+> Only for Study Usage.
+
+## ScreenShots
+![](./docs/ScreenShots.png)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
