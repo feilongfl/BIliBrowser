@@ -30,6 +30,7 @@ dependencies:
   #  video_player: ^0.10.0
   chewie: ^0.9.5
   screen: ^0.0.4
+  loadmore: ^1.0.3
 
 dev_dependencies:
   flutter_test:
