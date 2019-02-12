@@ -123,7 +123,7 @@ class loginState extends State<loginWiget> {
 //        Uri.parse("https://.bilibili.com/"), parseCookies(cookiesStr));
     var userinfoStr = await BiliBiliApi.HttpPrefGetAuto(
         "https://api.bilibili.com/x/web-interface/nav", "userinfo", true);
-    UserinfoEntity userinfo = json.decode(userinfoStr);
+    UserinfoEntity userinfo = UserinfoEntity.fromJson(json.decode(userinfoStr));
     if (userinfo.code == 0) {
       await prefs.setString('userName', userinfo.data.uname);
       await prefs.setInt('userLevel', userinfo.data.levelInfo.currentLevel);
