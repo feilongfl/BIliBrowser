@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_card_type64_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/attention_extend_json_entity.dart';
+import 'package:bilibrowser/ui/videopage/normalVideoPage.dart';
 import 'package:bilibrowser/ui/widget/video_card.dart';
 import 'package:flutter/material.dart';
 
@@ -21,12 +22,15 @@ class attentionVideoInfoItemType64 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return VideoCard(
-      title: card.title,
-      cover: card.imageUrls[0] ?? "",
-      userface: card.author.face,
-      username: card.author.name,
+    print(card.toString());
+    return InkResponse(
+      onTap: () => Navigator.of(context).push(normalVideoPage(0, card.id)),
+      child: VideoCard(
+        title: card.title,
+        cover: card.imageUrls[0] ?? "",
+        userface: card.author.face,
+        username: card.author.name,
+      ),
     );
   }
 }

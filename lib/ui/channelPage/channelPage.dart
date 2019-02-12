@@ -1,5 +1,6 @@
 import 'package:bilibrowser/bilibiliApi/jsonParse/channel_video.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/channel_video_data_entity.dart';
+import 'package:bilibrowser/ui/videopage/normalVideoPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -51,35 +52,39 @@ class channelCard extends StatelessWidget {
     // TODO: implement build
     return Container(
 //      color: Colors.red.withOpacity(0.5),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        child: Stack(
+      child: InkResponse(
+        onTap: () =>
+            Navigator.of(context).push(normalVideoPage(0, channelVideo.aid)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: Stack(
 //        alignment: AlignmentDirectional.bottomEnd,
-          fit: StackFit.expand,
-          children: <Widget>[
-            CachedNetworkImage(
-              imageUrl: channelVideo.pic,
-              fit: BoxFit.fill,
-              placeholder: Center(
-                child: CircularProgressIndicator(),
+            fit: StackFit.expand,
+            children: <Widget>[
+              CachedNetworkImage(
+                imageUrl: channelVideo.pic,
+                fit: BoxFit.fill,
+                placeholder: Center(
+                  child: CircularProgressIndicator(),
+                ),
               ),
-            ),
-            Stack(
-              children: <Widget>[
-                Opacity(
-                  opacity: 0.5,
-                  child: Container(
-                    height: 22,
-                    color: Colors.black,
+              Stack(
+                children: <Widget>[
+                  Opacity(
+                    opacity: 0.5,
+                    child: Container(
+                      height: 22,
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                Text(
-                  channelVideo.title,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ],
+                  Text(
+                    channelVideo.title,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

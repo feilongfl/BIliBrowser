@@ -17,6 +17,8 @@ class BlurImageBackground extends StatelessWidget {
   build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
+      alignment: AlignmentDirectional.topCenter,
+//      overflow: Overflow.visible,
       children: <Widget>[
         BlurAssetsBackground(),
         Container(

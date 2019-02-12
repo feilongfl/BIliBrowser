@@ -76,8 +76,17 @@ class liveListState extends State<liveList> {
                   itemCount: this.attention.data.cards.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Center(
-                            child: attentionVideoInfoItem(
-                                card: this.attention.data.cards[index]));
+                            child: Column(
+                              children: <Widget>[
+                                Center(child: Text(
+                                    "${attention.data.cards[index].desc
+                                        .type}"),),
+                                Container(
+                                  child: attentionVideoInfoItem(
+                                      card: this.attention.data.cards[index]),
+                                ),
+                              ],
+                            ));
                       }),
             ),
           );
