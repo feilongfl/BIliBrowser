@@ -3,6 +3,7 @@ import 'package:bilibrowser/ui/homepage/channaltab/channel.dart';
 import 'package:bilibrowser/ui/homepage/livetab/livetab.dart';
 import 'package:bilibrowser/ui/homepage/nav.dart';
 import 'package:bilibrowser/ui/homepage/newstab/newstab.dart';
+import 'package:bilibrowser/ui/search.dart';
 import 'package:flutter/material.dart';
 
 class TopBar extends StatefulWidget {
@@ -84,7 +85,7 @@ class _TopBarState extends State<TopBar> {
             ),
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).push(searchPage()),
             ),
           ],
           bottom: TabBar(

@@ -29,6 +29,8 @@ dependencies:
   #  path_provider: ^0.5.0
   #  video_player: ^0.10.0
   chewie: ^0.9.5
+  #  chewie:
+  #    path: ../chewie
   screen: ^0.0.4
   loadmore: ^1.0.3
 
@@ -60,6 +62,7 @@ flutter:
   #  - res/images/loading.gif
   - res/images/Placeholder.png
   - res/images/LoginLogo.png
+  - res/images/launch_image.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_info_entity.dart';
 import 'package:bilibrowser/bilibiliApi/jsonParse/live_video_entity.dart';
@@ -74,6 +75,7 @@ class LiveBodyState extends State<LiveBody> {
 
   @override
   Widget build(BuildContext context) {
+    var _random = Random();
     return Stack(
       children: <Widget>[
         BlurImageBackground(
@@ -89,18 +91,18 @@ class LiveBodyState extends State<LiveBody> {
                 color: Colors.black87,
                 child: video_url.length == 0
                     ? Stack(
-                        fit: StackFit.expand,
-                        children: <Widget>[
-                          CachedNetworkImage(
-                            imageUrl: liveinfo.pic,
-                            fit: BoxFit.fill,
-                          ),
-                          Center(child: CircularProgressIndicator()),
-                        ],
-                      )
+                  fit: StackFit.expand,
+                  children: <Widget>[
+                    CachedNetworkImage(
+                      imageUrl: liveinfo.pic,
+                      fit: BoxFit.fill,
+                    ),
+                    Center(child: CircularProgressIndicator()),
+                  ],
+                )
                     : BiliPlayer(
-                        video_url: video_url[0],
-                      )),
+                  video_url: video_url[_random.nextInt(video_url.length)],
+                )),
             Expanded(
               child: ListView(
                 children: <Widget>[
@@ -120,7 +122,7 @@ class LiveBodyState extends State<LiveBody> {
                                 width: 150,
                                 child: ClipRRect(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                  BorderRadius.all(Radius.circular(10)),
                                   child: Stack(
                                     alignment: AlignmentDirectional.topStart,
                                     children: <Widget>[
@@ -148,7 +150,7 @@ class LiveBodyState extends State<LiveBody> {
                                     Text(
                                       liveinfo.uname,
                                       style:
-                                          Theme.of(context).textTheme.subtitle,
+                                      Theme.of(context).textTheme.subtitle,
                                     ),
 //                              Padding(
 //                                padding: EdgeInsets.only(top: 10),

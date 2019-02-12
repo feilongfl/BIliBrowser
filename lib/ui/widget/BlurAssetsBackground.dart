@@ -1,15 +1,13 @@
 import 'dart:ui';
 
-import 'package:bilibrowser/ui/widget/BlurAssetsBackground.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class BlurImageBackground extends StatelessWidget {
-  BlurImageBackground(
-      {Key key, this.imageUri, this.sigmaX, this.sigmaY, this.overlayColor})
+class BlurAssetsBackground extends StatelessWidget {
+  BlurAssetsBackground(
+      {Key key, this.imageAssets, this.sigmaX, this.sigmaY, this.overlayColor})
       : super(key: key);
 
-  final String imageUri;
+  final String imageAssets;
   final double sigmaX, sigmaY;
   final Color overlayColor;
 
@@ -18,13 +16,11 @@ class BlurImageBackground extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: <Widget>[
-        BlurAssetsBackground(),
         Container(
           height: double.infinity,
-          child: CachedNetworkImage(
+          child: Image.asset(
+            imageAssets,
             fit: BoxFit.cover,
-//            placeholder: Center(child: CircularProgressIndicator()),
-            imageUrl: this.imageUri,
           ),
         ),
         BackdropFilter(

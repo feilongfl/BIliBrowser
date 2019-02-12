@@ -53,76 +53,11 @@ class _BiliPlayerState extends State<BiliPlayer> {
     return Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: <Widget>[
-          InkResponse(
-            onTap: () {
-              if (unshowContralBar)
-                barTimer = Timer(
-                    Duration(seconds: 3),
-                    () => setState(() {
-                          unshowContralBar = true;
-                        }));
-              setState(() {
-                unshowContralBar = !unshowContralBar;
-              });
-            },
-            onDoubleTap: () => play_pause(),
-            child: Center(
-              child: Chewie(
-                controller: chewieController,
-              ),
+          Center(
+            child: Chewie(
+              controller: chewieController,
             ),
           ),
-//          Offstage(
-//            offstage: unshowContralBar,
-//            child: Opacity(
-//              opacity: 0.7,
-//              child: Container(
-//                padding: EdgeInsets.only(top: 5),
-//                height: 45,
-////                width: 200,
-//                color: Colors.black,
-//                child: Column(
-//                  children: <Widget>[
-//                    Row(
-//                      crossAxisAlignment: CrossAxisAlignment.center,
-//                      children: <Widget>[
-//                        InkResponse(
-//                          onTap: () => play_pause(),
-//                          child: Container(
-//                            padding: EdgeInsets.only(left: 5),
-//                            child: Center(
-//                              child: Icon(
-//                                _controller.value.isPlaying
-//                                    ? Icons.pause
-//                                    : Icons.play_arrow,
-//                                color: Colors.white,
-//                              ),
-//                            ),
-//                          ),
-//                        ),
-//                        Flexible(
-//                          child: Container(),
-//                        ),
-//                        Container(
-//                          padding: EdgeInsets.only(right: 5),
-//                          child: Center(
-//                            child: Icon(
-//                              Icons.fullscreen,
-//                              color: Colors.white,
-//                            ),
-//                          ),
-//                        ),
-//                      ],
-//                    ),
-//                    VideoProgressIndicator(
-//                      _controller,
-//                      allowScrubbing: true,
-//                    ),
-//                  ],
-//                ),
-//              ),
-//            ),
-//          ),
         ]);
   }
 
