@@ -25,12 +25,14 @@ dependencies:
   cached_network_image: ^0.5.1
   html: ^0.13.3
   dio: ^2.0.0
-  #  shared_preferences: ^0.5.0
-  #  path_provider: ^0.5.0
-  #  video_player: ^0.10.0
-  chewie: ^0.9.5
-  #  chewie:
-  #    path: ../chewie
+    #  shared_preferences: ^0.5.0
+    #  path_provider: ^0.5.0
+    #  video_player: ^0.10.0
+  #  chewie: ^0.9.5
+  chewie:
+    git:
+      url: git://github.com/feilongfl/chewie.git
+  #      path: ../chewie
   screen: ^0.0.4
   loadmore: ^1.0.3
 

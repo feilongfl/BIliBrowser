@@ -18,6 +18,7 @@ class attentionVideoInfoItemType1 extends StatelessWidget {
     card = AttentionCardType1.fromJson(json.decode(attentionDataCard.card));
     ext =
         AttentionExtendJson.fromJson(json.decode(attentionDataCard.extendJson));
+    ext = null;
     ori = AttentionCardType1Origin8.fromJson(json.decode(card.origin));
   }
 
